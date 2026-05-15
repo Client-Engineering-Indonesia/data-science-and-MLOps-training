@@ -1,6 +1,6 @@
-# Perform Exploratory Data Analysis (EDA) and Feature Engineering
+<img width="1783" height="900" alt="image" src="https://github.com/user-attachments/assets/71279ead-0629-44b9-b4e6-c0e144653edf" /># Perform Exploratory Data Analysis (EDA) and Feature Engineering
 
-Overview
+Overview:
 
 In this session, you will use a table that contains individual customer purchase transaction from e-commerce company. Then we will create repurchase model to identify which customers who are most likely to purchase again in next 6 months after they made latest purchase.
 
@@ -105,30 +105,66 @@ For this lab session, we use some functions to convert PURCHASE_DATE to year-and
 
 16. Find Aggregate node --> drag and drop it to right pane --> link it with Derive node
 
-<img width="948" height="237" alt="image" src="https://github.com/user-attachments/assets/09ea59c1-cece-44d3-b097-0eae4b8c307b" />
+<img width="929" height="251" alt="image" src="https://github.com/user-attachments/assets/9fb0d5ab-8ff6-4f6c-a600-3db086898034" />
 
-17. Click Add Columns button under Key Fields section
+17. Click 2x Aggregate node --> click Add Columns button under Key Fields section
 
-<img width="222" height="112" alt="image" src="https://github.com/user-attachments/assets/5a6f08dc-5bbb-4dd6-afe2-a8e55798292b" />
+<img width="213" height="115" alt="image" src="https://github.com/user-attachments/assets/996d4d1d-1594-4f06-9ecb-ef6b3f146799" />
 
-18. Select CUSTOMER_ID and PURCHASE_PERIOD --> click OK button
+18. Select CUSTOMER_ID, GENDER, and PURCHASE_PERIOD --> click OK button
 
-<img width="665" height="583" alt="image" src="https://github.com/user-attachments/assets/106d10de-95e1-42e7-bcb5-ce5d3b5f64fa" />
+<img width="673" height="905" alt="image" src="https://github.com/user-attachments/assets/18d3f7cc-2606-445c-97e2-1c969bc2d3a5" />
 
-19. Click Add Columns button under Aggregate Fields section
+19. Scroll down to Default Mode section --> select SUM
 
-<img width="213" height="116" alt="image" src="https://github.com/user-attachments/assets/c9bfb57a-3330-41a3-9cfa-01ae03349a5e" />
+<img width="625" height="388" alt="image" src="https://github.com/user-attachments/assets/d95197eb-79fa-4f70-8168-0ac35a8c1d23" />
 
-20. Select TOTAL_PURCHASE_AMOUNT --> click OK button
+20. Scroo up a bit to Aggregate Fields section --> click Add Columns button 
 
-<img width="678" height="863" alt="image" src="https://github.com/user-attachments/assets/9801b450-e1f0-425b-941d-75e4207a3a30" />
+<img width="199" height="110" alt="image" src="https://github.com/user-attachments/assets/702ee163-bf32-4c6b-99cf-c7932d35fb62" />
 
-21. Select MEAN, SUM, MIN, MAX, MEDIAN under Default Mode section
+21. Select TOTAL_PURCHASE_AMOUNT --> click OK button
 
-<img width="628" height="390" alt="image" src="https://github.com/user-attachments/assets/a18ba6a6-582a-44d7-9fe6-4e2d6acddae2" />
+<img width="671" height="899" alt="image" src="https://github.com/user-attachments/assets/43435b05-9162-47b5-8a7e-2c2785b93adb" />
 
 22. Tick-off Include Record Count --> click Save button
 
-<img width="639" height="594" alt="image" src="https://github.com/user-attachments/assets/e88d6d62-9f84-4dda-924e-ab04bcd6fa66" />
+<img width="632" height="595" alt="image" src="https://github.com/user-attachments/assets/4c6f0809-2bc0-4f5a-87c1-b74d862844e1" />
 
-23. 
+23. Now you will get monthly purchase transaction for each individual customer. You can check how the data looks like by click Preview data. From the image below each transaction has been aggregated to Customer and purchase transaction period (year,month).
+
+<img width="713" height="619" alt="image" src="https://github.com/user-attachments/assets/b2c6c776-b3bb-4d0e-8a89-b63636787b17" />
+
+24. Next we are going to export the result into a CSV file stored in cos-connection that we have built previously. To do this, find Data Asset Export node, drag and drop it to right pane, and link it with Aggregate node.
+
+<img width="1141" height="479" alt="image" src="https://github.com/user-attachments/assets/e4e032b0-8780-4713-8dbb-7653ed0c5129" />
+
+25. Click 2x Data Asset Export --> click Change Data Asset button
+
+<img width="632" height="258" alt="image" src="https://github.com/user-attachments/assets/3c656d12-1e6f-463d-adad-cc111526aed7" />
+
+26. Select Connection --> select cos-connection --> select your bucket name (it begins with project name followed with random characters) --> add New Item named "CUSTOMER_MONTHLY_PURCHASE" --> click Select button
+
+<img width="1783" height="900" alt="image" src="https://github.com/user-attachments/assets/9eb31362-87a0-4598-a8c8-dbc3b6e2ea4d" />
+
+27. Change File format to CSV --> ensure First line is header is checked --> click Save button
+
+<img width="634" height="734" alt="image" src="https://github.com/user-attachments/assets/77dfd5d1-b1a5-4109-baef-a37e654312fc" />
+
+28. Now click Run All button <img width="100" height="23" alt="image" src="https://github.com/user-attachments/assets/c700e200-b096-4093-b06f-eefa10b0b2ed" /> --> wait until the process is completed
+
+<img width="1665" height="443" alt="image" src="https://github.com/user-attachments/assets/dd088200-4f41-42cc-829e-1722b56cbf9b" />
+
+29. Once the process is completed, you can see there is new file named "CUSTOMER_MONTHLY_PURCHASE.csv" in your COS bucket.
+
+<img width="1612" height="353" alt="image" src="https://github.com/user-attachments/assets/a94cf5aa-7852-4c08-9100-acfd024718a4" />
+
+Guideline to see all files in your COS bucket:
+* Go to IBM Cloud Resource page (https://cloud.ibm.com/resources) --> expand Storage section --> select available Cloud Object Storage instance
+
+<img width="1830" height="88" alt="image" src="https://github.com/user-attachments/assets/a6c605be-3bc4-4a40-8f72-ba6f31f25bec" />
+
+* Here you will see list of existing buckets in Buckets tab --> to know your project bucket name, you must understand this format <YourProjectName>-<RandomCharacters> --> for my case it is "repurchasemodel-donotdelete-pr-spincdlcpmf5ao" with "repurchasemodel" known as my project name and "donotdelete-pr-spincdlcpmf5ao" is random characters generated automatically once you have created watsonx project
+
+<img width="1619" height="412" alt="image" src="https://github.com/user-attachments/assets/832fd5a5-f973-4a17-9fde-2b1c7abf5b43" />
+
