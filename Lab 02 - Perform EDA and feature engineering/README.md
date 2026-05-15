@@ -433,4 +433,42 @@ Connection --> select cos-connection --> select your bucket name --> type "BASE_
 
 ### Create Feature Store
 
-80. 
+Notes:
+Feature store is collection of features or attributes that will be used to develop machine learning model. We will use columns generated in our last 3, 6, and 12 months table for this feature store.
+
+80. Go to Asset tab --> create new SPSS Modeler asset named "04-Create Feature Store"
+
+<img width="1823" height="895" alt="image" src="https://github.com/user-attachments/assets/ad5fa62e-92f5-4b80-b4e4-6d328f524655" />
+
+81. Add Data Asset node into right pane --> select Connection --> select cos-connection --> select your bucket name --> select BASE_USER.csv --> click Select button 
+
+<img width="1771" height="897" alt="image" src="https://github.com/user-attachments/assets/49b083e6-4a38-4c41-b8be-459d32425d01" />
+
+82. Click Save button
+
+83. Add Data Asset node into right pane --> select Connection --> select cos-connection --> select your bucket name --> select CUSTOMER_PURCHASE_L3M.csv --> click Select button 
+
+<img width="1778" height="899" alt="image" src="https://github.com/user-attachments/assets/e274d075-fea7-4139-9c6e-33bcf1e896cd" />
+
+84. Click Save button
+
+85. Add Merge node into right pane --> first, link it to BASE_USER Data Asset node --> second, link it to CUSTOMER_PURCHASE_L3M Data Asset node
+
+<img width="806" height="428" alt="image" src="https://github.com/user-attachments/assets/dba54406-464c-4be0-9523-aeb8c0be6f51" />
+
+86. Click 2x Merge node --> ensure that your view is same with image below --> then click Save button
+
+<img width="577" height="907" alt="image" src="https://github.com/user-attachments/assets/4a470ed4-4f05-425f-a3a7-65d02269f813" />
+
+87. Repeat step 83-86 with Data Asset CUSTOMER_PURCHASE_L6M.csv and CUSTOMER_PURCHASE_L12M.csv. Below is the image that shows end to end flow with the data preview.
+
+<img width="1530" height="714" alt="image" src="https://github.com/user-attachments/assets/33d4ced1-73b2-43b7-94b5-ddcea263e4a9" />
+
+88. Last, export it to CSV file named "FEATURE_STORE.csv" in cos-connection using Data Asset Export node.
+
+<img width="574" height="910" alt="image" src="https://github.com/user-attachments/assets/ba5b133d-869c-4a50-b9b3-4f019f6d1eab" />
+
+89. Click Run All button <img width="87" height="25" alt="image" src="https://github.com/user-attachments/assets/4138fd35-57d5-4f95-9256-1284245653e5" /> --> to generate feature store that will be used for as training data to build repurchase model
+
+<img width="1689" height="522" alt="image" src="https://github.com/user-attachments/assets/2990eb46-f3e5-4b93-b96a-7063dbdab098" />
+
