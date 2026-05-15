@@ -1,4 +1,4 @@
-<img width="1783" height="900" alt="image" src="https://github.com/user-attachments/assets/71279ead-0629-44b9-b4e6-c0e144653edf" /># Perform Exploratory Data Analysis (EDA) and Feature Engineering
+# Perform Exploratory Data Analysis (EDA) and Feature Engineering
 
 Overview:
 
