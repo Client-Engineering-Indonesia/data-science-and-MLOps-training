@@ -24,11 +24,11 @@ Learn how to create and configure an SPSS Modeler asset in your watsonx project.
 Analyze customer purchase data to understand patterns, distributions, and data quality.
 
 ### [Step 3: Perform Feature Engineering](./03-feature-engineering.md)
-Create sophisticated features through:
-- **3.1** Monthly purchase transaction aggregation
-- **3.2** Time-based aggregations (3, 6, and 12 months)
-- **3.3** Base user dataset with repurchase labels
-- **3.4** Comprehensive feature store creation
+Create sophisticated features through multiple sub-steps:
+- **[3.1 Monthly Purchase Transaction Table](./03-1-monthly-purchase-table.md)** - Aggregate transactions by month
+- **[3.2 Time-Based Aggregations](./03-2-time-based-aggregations.md)** - Create 3, 6, and 12-month features
+- **[3.3 Base User Dataset](./03-3-base-user-dataset.md)** - Build labeled dataset for training
+- **[3.4 Feature Store](./03-4-feature-store.md)** - Combine all features into final dataset
 
 ---
 
@@ -50,6 +50,14 @@ By the end of this lab, you will have:
 - ✅ Generated time-based feature sets (3, 6, and 12 months)
 - ✅ Built a labeled base user dataset for supervised learning
 - ✅ Created a feature store ready for model training
+
+**Key Outputs:**
+- `CUSTOMER_MONTHLY_PURCHASE.csv` - Monthly aggregated transactions
+- `CUSTOMER_PURCHASE_L3M.csv` - 3-month aggregations
+- `CUSTOMER_PURCHASE_L6M.csv` - 6-month aggregations
+- `CUSTOMER_PURCHASE_L12M.csv` - 12-month aggregations
+- `BASE_USER.csv` - Labeled dataset with repurchase indicators
+- `FEATURE_STORE.csv` - Final feature store for ML training
 
 ---
 
