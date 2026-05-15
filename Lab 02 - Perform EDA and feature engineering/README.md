@@ -678,21 +678,53 @@ Now we are going to use CUSTOMER_MONTHLY_PURCHASE.csv as our base table to creat
 
 #### 3.4.7 Configure L3M Merge
 1. Double-click the **Merge** node
-2. Verify the configuration matches the image below
-3. Click the **Save** button
+2. Set **Join** type to `Partial Outer Join`
+3. Verify the configuration matches the image below
+4. Click the **Save** button
 
-<img width="577" height="907" alt="image" src="https://github.com/user-attachments/assets/4a470ed4-4f05-425f-a3a7-65d02269f813" />
+<img width="577" height="913" alt="image" src="https://github.com/user-attachments/assets/1fb33cc9-cdef-41e2-a62a-426229e5b5b2" />
 
 #### 3.4.8 Add L6M and L12M Data Assets
 Repeat steps 3.4.4 through 3.4.7 for:
 1. **CUSTOMER_PURCHASE_L6M.csv**
 2. **CUSTOMER_PURCHASE_L12M.csv**
+3. Ensure you set **Join** type to `Partial Outer Join`
 
 The image below shows the complete end-to-end flow with data preview:
 
-<img width="1530" height="714" alt="image" src="https://github.com/user-attachments/assets/33d4ced1-73b2-43b7-94b5-ddcea263e4a9" />
+<img width="1127" height="491" alt="image" src="https://github.com/user-attachments/assets/8743aa13-881d-4814-a793-c3ba630b0905" />
 
-#### 3.4.9 Export Feature Store
+#### 3.4.10 Add CUSTOMER_MONTHLY_PURCHASE File
+1. Add a **Data Asset** node to the canvas
+2. Open Properties panel and click **Change data asset** button <img width="208" height="37" alt="image" src="https://github.com/user-attachments/assets/5e0ad686-9a6c-4949-828f-c50a086d0e70" />
+3. Select **Connection**
+4. Select **cos-connection**
+5. Select your bucket name
+6. Select **CUSTOMER_MONTHLY_PURCHASE.csv** file
+7. Click **Select** button
+8. Click **Save** button
+
+<img width="1595" height="437" alt="image" src="https://github.com/user-attachments/assets/01629ec5-bba5-402f-9e78-4a99adee0b04" />
+
+#### 3.4.11 Join CUSTOMER_MONTHLY_PURCHASE With Latest Data
+1. Add a **Merge** node to the canvas
+2. Link prior **Merge** node with latest **Merge** node
+3. Link **CUSTOMER_MONTHLY_PURCHASE** data asset node with latest **Merge** node
+
+<img width="1048" height="291" alt="image" src="https://github.com/user-attachments/assets/534f7215-9b7d-415a-886c-d942350e96ef" />
+
+#### 3.4.12 Configure GENDER variable
+1. Double-click latest **Merge** node
+2. Click **Add columns +** button <img width="117" height="30" alt="image" src="https://github.com/user-attachments/assets/bf89c800-d7af-4c60-80b1-8201ed51e0c1" />
+3. Select **CUSTOMER_ID** and **PURCHASE_PERIOD**
+4. Set **Join** type to `Partial Outer Join`
+5. Exclude **TOTAL_PURCHASE_AMOUNT_Sum** from **Filter** section
+6. Verify using image below
+7. Click **Save** button
+
+<img width="510" height="918" alt="image" src="https://github.com/user-attachments/assets/e9becd21-b896-4ff8-883d-695d561fec9a" />
+
+#### 3.4.13 Export Feature Store
 1. Add a **Data Asset Export** node to the canvas
 2. Link it to the final Merge node
 3. Configure the export:
@@ -703,7 +735,7 @@ The image below shows the complete end-to-end flow with data preview:
 
 <img width="574" height="910" alt="image" src="https://github.com/user-attachments/assets/ba5b133d-869c-4a50-b9b3-4f019f6d1eab" />
 
-#### 3.4.10 Execute Feature Store Creation
+#### 3.4.14 Execute Feature Store Creation
 1. Click the **Run All** button: <img width="87" height="25" alt="image" src="https://github.com/user-attachments/assets/4138fd35-57d5-4f95-9256-1284245653e5" />
 
 <img width="1207" height="348" alt="image" src="https://github.com/user-attachments/assets/38b360f2-2772-4551-8e0a-67f9c10d9c64" />
