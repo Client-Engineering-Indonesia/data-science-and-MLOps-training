@@ -738,7 +738,7 @@ The image below shows the complete end-to-end flow with data preview:
 #### 3.4.14 Execute Feature Store Creation
 1. Click the **Run All** button: <img width="87" height="25" alt="image" src="https://github.com/user-attachments/assets/4138fd35-57d5-4f95-9256-1284245653e5" />
 
-<img width="1207" height="348" alt="image" src="https://github.com/user-attachments/assets/38b360f2-2772-4551-8e0a-67f9c10d9c64" />
+<img width="1150" height="307" alt="image" src="https://github.com/user-attachments/assets/ae16f3a3-9c76-409b-bdd4-942ef2a6f78e" />
 
 2. Wait for the process to complete
 3. Verify that **FEATURE_STORE.csv** has been created in your COS bucket
