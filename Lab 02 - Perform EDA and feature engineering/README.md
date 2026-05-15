@@ -1,173 +1,276 @@
-# Perform Exploratory Data Analysis (EDA) and Feature Engineering
+# Lab 02: Perform Exploratory Data Analysis (EDA) and Feature Engineering
 
-Overview:
-* In this session, you will use a table that contains individual customer purchase transaction from e-commerce company.
-* We will create repurchase model to identify which customers who are most likely to purchase again in next 6 months after they made latest purchase.
-* To do this, we will aggregate transactions into monthly basis and use last 12 months to generate customer repurchase probability score (ranging from 0 < score < 1).
-* If score is less than or equal to 0.5, the prediction result is "customer will not repurchase in next 6 months"
-* If score is greater than 0.5, the prediction result is "customer will repurchase in next 6 months"
-* This model will be run on monthly basis on end-of-month
+## Overview
 
-## Create SPSS Modeler Asset
+In this lab, you will:
+* Work with customer purchase transaction data from an e-commerce company
+* Create a repurchase prediction model to identify customers likely to purchase again within the next 6 months
+* Aggregate transactions on a monthly basis using the last 12 months of data
+* Generate customer repurchase probability scores (ranging from 0 to 1)
+  - **Score ≤ 0.5**: Customer will NOT repurchase in the next 6 months
+  - **Score > 0.5**: Customer WILL repurchase in the next 6 months
+* Run the model monthly at end-of-month
 
-1. In Asset tab, click New Asset button --> type "SPSS" in search field --> select "Build models as a visual flow"
+---
+
+## Step 1: Create SPSS Modeler Asset
+
+### 1.1 Create New SPSS Modeler Flow
+1. Navigate to the **Asset** tab
+2. Click the **New Asset** button
+3. Type "SPSS" in the search field
+4. Select **"Build models as a visual flow"**
 
 <img width="1788" height="507" alt="image" src="https://github.com/user-attachments/assets/70fc3e20-3e50-4895-9a3a-9aaf2010c762" />
 
-2. Set Name to "00-Exploratory Data Analysis" --> set Environment Definition to "Default SPSS Modeler S (2 vCPU 8 GB RAM)" --> click Create button
+### 1.2 Configure SPSS Modeler Settings
+1. Set **Name** to: `00-Exploratory Data Analysis`
+2. Set **Environment Definition** to: `Default SPSS Modeler S (2 vCPU 8 GB RAM)`
+3. Click the **Create** button
 
 <img width="1808" height="883" alt="image" src="https://github.com/user-attachments/assets/30d9fdc5-6fae-4bc5-89aa-8c087c330d78" />
 
-## Perform Exploratory Data Analysis (EDA)
+---
 
-3. Select Data Asset under Import section, drag and drop it to right pane 
+## Step 2: Perform Exploratory Data Analysis (EDA)
+
+### 2.1 Add Data Asset Node
+1. Locate **Data Asset** under the **Import** section in the left panel
+2. Drag and drop it to the canvas (right pane)
 
 <img width="913" height="309" alt="image" src="https://github.com/user-attachments/assets/c115fbfd-9ed6-498c-8793-c4aed7454662" />
 
-4. Click it 2x to open Data Asset panel --> select Connection --> select db2-connection --> select RSH14813 --> select CUSTOMER_TRANSACTIONS table --> click Select button
+### 2.2 Configure Data Source
+1. Double-click the **Data Asset** node to open its properties panel
+2. Select **Connection**
+3. Select **db2-connection**
+4. Select **RSH14813** schema
+5. Select **CUSTOMER_TRANSACTIONS** table
+6. Click the **Select** button
 
 <img width="1773" height="886" alt="image" src="https://github.com/user-attachments/assets/3cf40f51-7ea4-4ea4-8362-f551c2951ed3" />
 
-5. In Data Asset properties panel, click Save button
+### 2.3 Save Data Asset Configuration
+- In the Data Asset properties panel, click the **Save** button
 
 <img width="642" height="902" alt="image" src="https://github.com/user-attachments/assets/f9f1f014-d2bf-4ab4-a4bf-8bf79cb86a51" />
 
-6. Hover your mouse to Data Asset node --> click Preview icon <img width="1662" height="829" alt="image" src="https://github.com/user-attachments/assets/a10be403-7108-4858-a399-8db3e1817b0b" /> --> it will display existing dataset
+### 2.4 Preview the Dataset
+1. Hover your mouse over the **Data Asset** node
+2. Click the **Preview** icon: <img width="1662" height="829" alt="image" src="https://github.com/user-attachments/assets/a10be403-7108-4858-a399-8db3e1817b0b" />
+3. Review the displayed dataset
 
 <img width="1662" height="829" alt="image" src="https://github.com/user-attachments/assets/a1292872-b63c-4534-92c7-c5b7374c0304" />
 
-7. Find Data Audit node and put it ob right pane --> hover your mouse in Data Asset node --> click and hold right arrow icon <img width="22" height="19" alt="image" src="https://github.com/user-attachments/assets/65ed57b5-c728-4d04-8c86-98c020f73e10" /> --> move your mouse to Data Audit node to link Data Asset with this new Data Audit
+### 2.5 Add Data Audit Node
+1. Find the **Data Audit** node in the left panel
+2. Drag and drop it to the canvas
+3. Hover your mouse over the **Data Asset** node
+4. Click and hold the **right arrow** icon: <img width="22" height="19" alt="image" src="https://github.com/user-attachments/assets/65ed57b5-c728-4d04-8c86-98c020f73e10" />
+5. Drag to the **Data Audit** node to create a connection
 
 <img width="930" height="373" alt="image" src="https://github.com/user-attachments/assets/85570ea6-8703-429a-b0cc-1909a43ba55e" />
 
-8. In Data Audit properties panel, click Run button
+### 2.6 Run Data Audit
+- In the **Data Audit** properties panel, click the **Run** button
 
 <img width="481" height="140" alt="image" src="https://github.com/user-attachments/assets/ca7103bb-3fc8-4208-8d85-67f1ace3c169" />
 
-9. In Outputs section click Data Audit
+### 2.7 View Audit Results
+- In the **Outputs** section, click **Data Audit**
 
 <img width="321" height="223" alt="image" src="https://github.com/user-attachments/assets/185d34a6-14ba-4e69-bf07-09d7eac03144" />
 
-10. Here you will see basic statistics from the data. For example data type, min, max, mean, standard deviation, and unique value from each column
+### 2.8 Analyze Data Statistics
+Review the basic statistics displayed for each column:
+- Data type
+- Minimum and maximum values
+- Mean and standard deviation
+- Unique value counts
 
 <img width="1793" height="615" alt="image" src="https://github.com/user-attachments/assets/28cc0162-aa57-459e-a907-166e63525808" />
 
-Notes:
-For training purposes, we will focus on several columns as below:
-* CUSTOMER_ID: unique customer identifier
-* PURCHASE_DATE: when customer made purchase transaction
-* TOTAL_PURCHASE_AMOUNT: total purchase amount
-* GENDER: customer gender
+**Key Columns for This Lab:**
+- **CUSTOMER_ID**: Unique customer identifier
+- **PURCHASE_DATE**: Transaction date
+- **TOTAL_PURCHASE_AMOUNT**: Total purchase amount
+- **GENDER**: Customer gender
 
-11. You can start exploring each column above by clicking it. Let's start by clicking GENDER. Here you will distribution of each gender (MALE and FEMALE). You can go to Proportion, Pareto, and Distribution to see other analysis. 
+### 2.9 Explore Individual Columns
+1. Click on the **GENDER** column to view its distribution
+2. Observe the distribution of MALE and FEMALE values
+3. Explore the **Proportion**, **Pareto**, and **Distribution** tabs for additional insights
 
 <img width="1610" height="731" alt="image" src="https://github.com/user-attachments/assets/69dbaac0-eaf2-4448-a395-9597fec0e4f2" />
 
-12. Now take a look at TOTAL_PURCHASE_AMOUNT. Here you will difference analysis based on its data type (Continuous or Nominal).
+### 2.10 Analyze Continuous Variables
+- Click on **TOTAL_PURCHASE_AMOUNT** to view its analysis
+- Note the different analysis options available for continuous data types versus nominal data types
 
 <img width="1605" height="726" alt="image" src="https://github.com/user-attachments/assets/cb5cb00d-eb74-4d63-b638-da8859cc81df" />
 
-## Perform Feature Engineering
+---
 
-### Create Monthly Purchase Transaction Table
+## Step 3: Perform Feature Engineering
 
-Overview:
-We will aggregate each purchase transaction into monthly basis to enable the model run every end-of-month.
+### 3.1 Create Monthly Purchase Transaction Table
 
-13. Go back to Asset tab and create new SPSS Modeler asset --> set Name to "01-Customer Monthly Transaction" --> leave Environment Definition as default --> click Create button
+**Objective:** Aggregate purchase transactions on a monthly basis to enable end-of-month model execution.
+
+#### 3.1.1 Create New SPSS Modeler Asset
+1. Return to the **Asset** tab
+2. Create a new **SPSS Modeler** asset
+3. Set **Name** to: `01-Customer Monthly Transaction`
+4. Leave **Environment Definition** as default
+5. Click the **Create** button
 
 <img width="1814" height="879" alt="image" src="https://github.com/user-attachments/assets/56b80c76-4732-488e-9043-73f48e1946c5" />
 
-14. Redo step 3-4
+#### 3.1.2 Add and Configure Data Asset
+- Repeat steps 2.1 and 2.2 to add and configure the Data Asset node
 
-15. Find Derive node --> drag and drop it into right pane --> link it with Data Asset node
+#### 3.1.3 Add Derive Node
+1. Find the **Derive** node in the left panel
+2. Drag and drop it to the canvas
+3. Link it with the **Data Asset** node
 
 <img width="681" height="322" alt="image" src="https://github.com/user-attachments/assets/f6d6cbce-625d-498c-ad4d-c9a3b52e9010" />
 
-Notes: 
-Derive node enables you to create new column from existing table
+> **Note:** The Derive node allows you to create new columns from existing table data.
 
-16. Click 2x Derive node --> set Derived Field Name to "PURCHASE_PERIOD"
+#### 3.1.4 Configure Derived Field
+1. Double-click the **Derive** node
+2. Set **Derived Field Name** to: `PURCHASE_PERIOD`
 
 <img width="477" height="406" alt="image" src="https://github.com/user-attachments/assets/35440103-34b8-4087-98c6-9b76c845efb3" />
 
-17. Click Launch Expression Builder icon <img width="23" height="26" alt="image" src="https://github.com/user-attachments/assets/e3e2188a-9bb0-4b99-8a64-1b1e7d23c261" /> --> set Expression to "date_add_days(-1, date_add_months(1, datetime_date(datetime_year(PURCHASE_DATE), datetime_month(PURCHASE_DATE), 1) ) )" --> click Validate and ensure your formula is correct --> click OK button
+#### 3.1.5 Create Expression for Purchase Period
+1. Click the **Launch Expression Builder** icon: <img width="23" height="26" alt="image" src="https://github.com/user-attachments/assets/e3e2188a-9bb0-4b99-8a64-1b1e7d23c261" />
+2. Enter the following expression:
+   ```
+   date_add_days(-1, date_add_months(1, datetime_date(datetime_year(PURCHASE_DATE), datetime_month(PURCHASE_DATE), 1)))
+   ```
+3. Click **Validate** to ensure the formula is correct
+4. Click the **OK** button
 
 <img width="1777" height="894" alt="image" src="https://github.com/user-attachments/assets/a0e649ed-9f57-4968-92a0-120675f02a3f" />
 
-Notes:
-For this lab session, we use some functions to convert PURCHASE_DATE to year-and-month-FirstDateOfTheMonth format (YYYY-mm-01). Logic in step 17 will convert purchase transaction date into end of month date. If you have different logic, you can explore other function as well.
+> **Note:** This expression converts the PURCHASE_DATE to the last day of the month (end-of-month date). You can explore other functions if you have different logic requirements.
 
-18. Click Save button
+#### 3.1.6 Save Derive Configuration
+- Click the **Save** button
 
 <img width="475" height="898" alt="image" src="https://github.com/user-attachments/assets/ad189615-c028-4c35-a1cd-b94161ad6f7f" />
 
-19. Hover your mouse to Derive node --> click Preview icon --> here you will see new added column named "PURCHASE_PERIOD"
+#### 3.1.7 Preview Derived Column
+1. Hover your mouse over the **Derive** node
+2. Click the **Preview** icon
+3. Verify the new **PURCHASE_PERIOD** column has been added
 
 <img width="1658" height="668" alt="image" src="https://github.com/user-attachments/assets/fdfa4dc7-6909-4622-919f-8deae4c0ad1d" />
 
-20. Find Aggregate node --> drag and drop it to right pane --> link it with Derive node
+#### 3.1.8 Add Aggregate Node
+1. Find the **Aggregate** node in the left panel
+2. Drag and drop it to the canvas
+3. Link it with the **Derive** node
 
 <img width="929" height="251" alt="image" src="https://github.com/user-attachments/assets/9fb0d5ab-8ff6-4f6c-a600-3db086898034" />
 
-21. Click 2x Aggregate node --> click Add Columns button under Key Fields section
+#### 3.1.9 Configure Key Fields
+1. Double-click the **Aggregate** node
+2. Click the **Add Columns** button under the **Key Fields** section
 
 <img width="213" height="115" alt="image" src="https://github.com/user-attachments/assets/996d4d1d-1594-4f06-9ecb-ef6b3f146799" />
 
-22. Select CUSTOMER_ID, GENDER, and PURCHASE_PERIOD --> click OK button
+#### 3.1.10 Select Key Columns
+1. Select **CUSTOMER_ID**, **GENDER**, and **PURCHASE_PERIOD**
+2. Click the **OK** button
 
 <img width="673" height="905" alt="image" src="https://github.com/user-attachments/assets/18d3f7cc-2606-445c-97e2-1c969bc2d3a5" />
 
-23. Scroll down to Default Mode section --> select SUM
+#### 3.1.11 Set Aggregation Mode
+1. Scroll down to the **Default Mode** section
+2. Select **SUM**
 
 <img width="625" height="388" alt="image" src="https://github.com/user-attachments/assets/d95197eb-79fa-4f70-8168-0ac35a8c1d23" />
 
-24. Scroll up a bit to Aggregate Fields section --> click Add Columns button 
+#### 3.1.12 Add Aggregate Fields
+1. Scroll up to the **Aggregate Fields** section
+2. Click the **Add Columns** button
 
 <img width="199" height="110" alt="image" src="https://github.com/user-attachments/assets/702ee163-bf32-4c6b-99cf-c7932d35fb62" />
 
-21. Select TOTAL_PURCHASE_AMOUNT --> click OK button
+#### 3.1.13 Select Amount Field
+1. Select **TOTAL_PURCHASE_AMOUNT**
+2. Click the **OK** button
 
 <img width="671" height="899" alt="image" src="https://github.com/user-attachments/assets/43435b05-9162-47b5-8a7e-2c2785b93adb" />
 
-22. Tick-off Include Record Count --> click Save button
+#### 3.1.14 Finalize Aggregate Settings
+1. Uncheck **Include Record Count**
+2. Click the **Save** button
 
 <img width="636" height="899" alt="image" src="https://github.com/user-attachments/assets/e3cadd51-5451-4730-826c-5a160dbb86c4" />
 
-23. Now you will get monthly purchase transaction for each individual customer. You can check how the data looks like by click Preview data. From the image below each transaction has been aggregated to Customer and purchase transaction period (year,month).
+#### 3.1.15 Verify Aggregated Data
+1. Click **Preview Data** on the Aggregate node
+2. Verify that transactions are now aggregated by customer and purchase period (year, month)
 
 <img width="1239" height="644" alt="image" src="https://github.com/user-attachments/assets/12a94603-b0da-4f5b-92db-340ff06a1e05" />
 
-24. Next we are going to export the result into a CSV file stored in cos-connection that we have built previously. To do this, find Data Asset Export node, drag and drop it to right pane, and link it with Aggregate node.
+#### 3.1.16 Add Data Export Node
+1. Find the **Data Asset Export** node
+2. Drag and drop it to the canvas
+3. Link it with the **Aggregate** node
 
 <img width="1141" height="479" alt="image" src="https://github.com/user-attachments/assets/e4e032b0-8780-4713-8dbb-7653ed0c5129" />
 
-25. Click 2x Data Asset Export --> click Change Data Asset button
+#### 3.1.17 Configure Export Settings
+1. Double-click the **Data Asset Export** node
+2. Click the **Change Data Asset** button
 
 <img width="632" height="258" alt="image" src="https://github.com/user-attachments/assets/3c656d12-1e6f-463d-adad-cc111526aed7" />
 
-26. Select Connection --> select cos-connection --> select your bucket name (it begins with project name followed with random characters) --> add New Item named "CUSTOMER_MONTHLY_PURCHASE" --> click Select button
+#### 3.1.18 Set Export Destination
+1. Select **Connection**
+2. Select **cos-connection**
+3. Select your bucket name (format: `<ProjectName>-<RandomCharacters>`)
+4. In the **New Item** field, enter: `CUSTOMER_MONTHLY_PURCHASE`
+5. Click the **Select** button
 
 <img width="1783" height="900" alt="image" src="https://github.com/user-attachments/assets/9eb31362-87a0-4598-a8c8-dbc3b6e2ea4d" />
 
-27. Change File format to CSV --> ensure First line is header is checked --> click Save button
+#### 3.1.19 Set File Format
+1. Change **File format** to **CSV**
+2. Ensure **First line is header** is checked
+3. Click the **Save** button
 
 <img width="634" height="734" alt="image" src="https://github.com/user-attachments/assets/77dfd5d1-b1a5-4109-baef-a37e654312fc" />
 
-28. Now click Run All button <img width="100" height="23" alt="image" src="https://github.com/user-attachments/assets/c700e200-b096-4093-b06f-eefa10b0b2ed" /> --> wait until the process is completed
+#### 3.1.20 Execute the Flow
+1. Click the **Run All** button: <img width="100" height="23" alt="image" src="https://github.com/user-attachments/assets/c700e200-b096-4093-b06f-eefa10b0b2ed" />
+2. Wait for the process to complete
 
 <img width="1665" height="443" alt="image" src="https://github.com/user-attachments/assets/dd088200-4f41-42cc-829e-1722b56cbf9b" />
 
-29. Once the process is completed, you can see there is new file named "CUSTOMER_MONTHLY_PURCHASE.csv" in your COS bucket.
+#### 3.1.21 Verify File Creation
+- Once complete, verify that **CUSTOMER_MONTHLY_PURCHASE.csv** appears in your COS bucket
 
 <img width="1612" height="353" alt="image" src="https://github.com/user-attachments/assets/a94cf5aa-7852-4c08-9100-acfd024718a4" />
 
-Guideline to see all files in your COS bucket:
-* Go to IBM Cloud Resource page (https://cloud.ibm.com/resources) --> expand Storage section --> select available Cloud Object Storage instance
+**How to View Files in Your COS Bucket:**
+
+1. Navigate to IBM Cloud Resource page: https://cloud.ibm.com/resources
+2. Expand the **Storage** section
+3. Select your **Cloud Object Storage** instance
 
 <img width="1830" height="88" alt="image" src="https://github.com/user-attachments/assets/a6c605be-3bc4-4a40-8f72-ba6f31f25bec" />
 
-* Here you will see list of existing buckets in Buckets tab --> to know your project bucket name, you must understand this format <YourProjectName>-<RandomCharacters> --> for my case it is "repurchasemodel-donotdelete-pr-spincdlcpmf5ao" with "repurchasemodel" known as my project name and "donotdelete-pr-spincdlcpmf5ao" is random characters generated automatically once you have created watsonx project
+4. Go to the **Buckets** tab to view all buckets
+5. Locate your project bucket using the format: `<YourProjectName>-<RandomCharacters>`
+   - Example: `repurchasemodel-donotdelete-pr-spincdlcpmf5ao`
+   - "repurchasemodel" = project name
+   - "donotdelete-pr-spincdlcpmf5ao" = auto-generated characters
 
 <img width="1619" height="412" alt="image" src="https://github.com/user-attachments/assets/832fd5a5-f973-4a17-9fde-2b1c7abf5b43" />
 
@@ -326,149 +429,286 @@ Now we are going to use CUSTOMER_MONTHLY_PURCHASE.csv as our base table to creat
 
 <img width="319" height="407" alt="image" src="https://github.com/user-attachments/assets/ce0473d6-9770-4d8c-bacd-a805e5c386a5" />
 
-60. Click 2x Merge node --> change Output Field of TOTAL_PURCHASE_AMOUNT_Sum from second Data Asset node (Tag = 2) to "TOTAL_PURCHASE_AMOUNT_L12M" --> change Output Field of PURCHASE_PERIOD from second Data Asset node (Tag = 2) to "PURCHASE_PERIOD_L12M" --> click Save button
+#### 3.2.32 Update Merge Node for 12 Months
+1. Double-click the **Merge** node
+2. Change **Output Field** of TOTAL_PURCHASE_AMOUNT_Sum from second Data Asset node (Tag = 2) to: `TOTAL_PURCHASE_AMOUNT_L12M`
+3. Change **Output Field** of PURCHASE_PERIOD from second Data Asset node (Tag = 2) to: `PURCHASE_PERIOD_L12M`
+4. Click the **Save** button
 
 <img width="1063" height="901" alt="image" src="https://github.com/user-attachments/assets/27775e36-e0ec-43e4-b8af-5693b7201dbd" />
 
-61. Click 2x Select node --> set Condition to "date_months_difference(PURCHASE_PERIOD_L12M, PURCHASE_PERIOD) > 0 and date_months_difference(PURCHASE_PERIOD_L12M, PURCHASE_PERIOD) <= 12" --> click Save button
+#### 3.2.33 Update Select Condition for 12 Months
+1. Double-click the **Select** node
+2. Set **Condition** to:
+   ```
+   date_months_difference(PURCHASE_PERIOD_L12M, PURCHASE_PERIOD) > 0 and date_months_difference(PURCHASE_PERIOD_L12M, PURCHASE_PERIOD) <= 12
+   ```
+3. Click the **Save** button
 
 <img width="903" height="909" alt="image" src="https://github.com/user-attachments/assets/9b647651-8201-4b04-87d9-724e4b91ef01" />
 
-62. Click 2x Aggregate node and do several tasks as below:
+#### 3.2.34 Update Aggregate Node for 12 Months
+1. Double-click the **Aggregate** node
+2. Perform the following tasks:
 
-* Select TOTAL_PURCHASE_AMOUNT_L3M and delete it from Aggregate Fields
+   **a. Remove 3-month field:**
+   - Select **TOTAL_PURCHASE_AMOUNT_L3M** and delete it from Aggregate Fields
 
-<img width="791" height="177" alt="image" src="https://github.com/user-attachments/assets/c9dd2b7f-6d2a-4b40-a6ab-07ef7c90af06" />
+   <img width="791" height="177" alt="image" src="https://github.com/user-attachments/assets/c9dd2b7f-6d2a-4b40-a6ab-07ef7c90af06" />
 
-* Click Add Columns button under Aggregate Fields section --> select TOTAL_PURCHASE_AMOUNT_L12M --> select OK button
+   **b. Add 12-month field:**
+   - Click **Add Columns** button under Aggregate Fields section
+   - Select **TOTAL_PURCHASE_AMOUNT_L12M**
+   - Click the **OK** button
 
-<img width="670" height="901" alt="image" src="https://github.com/user-attachments/assets/77d0041c-ec3f-43a8-b5a4-3b9d795a94fe" />
+   <img width="670" height="901" alt="image" src="https://github.com/user-attachments/assets/77d0041c-ec3f-43a8-b5a4-3b9d795a94fe" />
 
-* Ensure Include Record Count is unchecked --> click Save button
+   **c. Finalize settings:**
+   - Ensure **Include Record Count** is unchecked
+   - Click the **Save** button
 
 <img width="634" height="632" alt="image" src="https://github.com/user-attachments/assets/918f7bed-c08c-4674-9030-a7e7774b814c" />
 
-63. Click 2x Data Asset Export node --> change File Name to CUSTOMER_PURCHASE_L6M.csv --> click Save button
+#### 3.2.35 Update Export File Name
+1. Double-click the **Data Asset Export** node
+2. Change **File Name** to: `CUSTOMER_PURCHASE_L12M.csv`
+3. Click the **Save** button
 
 <img width="897" height="916" alt="image" src="https://github.com/user-attachments/assets/ca3fc6a8-db84-474e-a8e7-db48351a8b05" />
 
-64. Click Preview Data icon in Aggregate node to ensure the data is as expected
+#### 3.2.36 Verify 12-Month Data
+- Click **Preview Data** on the Aggregate node to verify the data is correct
 
 <img width="1257" height="642" alt="image" src="https://github.com/user-attachments/assets/f9403d8a-b73b-4c0f-851f-0641315e37b6" />
 
-65. Click Run All button <img width="95" height="27" alt="image" src="https://github.com/user-attachments/assets/6dc2099e-3b56-4c21-9167-faa882f080ae" /> and wait until process completed
+#### 3.2.37 Execute 12-Month Flow
+1. Click the **Run All** button: <img width="95" height="27" alt="image" src="https://github.com/user-attachments/assets/6dc2099e-3b56-4c21-9167-faa882f080ae" />
+2. Wait for the process to complete
 
-### Create Base User
+---
 
-Notes:
-Base user is created to get ground truth of repurchase activity. So we are going to create customer data together with its actual purchase transaction in next 6 months. Label 0 means customer didn't repurchase in next 6 months and label 1 means customer repurchase in next 6 months.
+### 3.3 Create Base User Dataset
 
-66. Go to Asset tab --> select SPSS Modeler asset --> set Name to "03-Create Base User" --> click Create button
+**Objective:** Create a ground truth dataset for repurchase activity. This dataset will include customer data with their actual purchase behavior in the next 6 months.
+
+**Labels:**
+- **"N"**: Customer did NOT repurchase in the next 6 months
+- **"Y"**: Customer DID repurchase in the next 6 months
+
+#### 3.3.1 Create New SPSS Modeler Asset
+1. Go to the **Asset** tab
+2. Create a new **SPSS Modeler** asset
+3. Set **Name** to: `03-Create Base User`
+4. Click the **Create** button
 
 <img width="1814" height="882" alt="image" src="https://github.com/user-attachments/assets/20010827-09f8-429a-a133-60559a2e53d8" />
 
-67. Drag and drop Data Asset node into right pane --> click 2x --> then select Connection --> select cos-connection --> select your bucket name --> select CUSTOMER_MONTHLY_PURCHASE.csv --> click Select Button
+#### 3.3.2 Add Data Asset
+1. Drag and drop a **Data Asset** node to the canvas
+2. Double-click the node
+3. Select **Connection**
+4. Select **cos-connection**
+5. Select your bucket name
+6. Select **CUSTOMER_MONTHLY_PURCHASE.csv**
+7. Click the **Select** button
 
 <img width="1779" height="894" alt="image" src="https://github.com/user-attachments/assets/36da53f1-63fa-4056-97f2-54ad08ffe113" />
 
-68. Find Sort node --> put it into right pane --> link it with Data Asset node
+#### 3.3.3 Add Sort Node
+1. Find the **Sort** node
+2. Drag and drop it to the canvas
+3. Link it with the **Data Asset** node
 
 <img width="706" height="329" alt="image" src="https://github.com/user-attachments/assets/638122a2-116e-49b4-b9c9-663f1991c311" />
 
-69. Click 2x Sort node --> Click Add Columns button <img width="127" height="33" alt="image" src="https://github.com/user-attachments/assets/34cc7124-2ee1-4138-902f-45641fa51cbb" /> --> select CUSTOMER_ID and PURCHASE_PERIOD --> click Save button
+#### 3.3.4 Configure Sort Columns
+1. Double-click the **Sort** node
+2. Click the **Add Columns** button: <img width="127" height="33" alt="image" src="https://github.com/user-attachments/assets/34cc7124-2ee1-4138-902f-45641fa51cbb" />
+3. Select **CUSTOMER_ID** and **PURCHASE_PERIOD**
+4. Click the **Save** button
 
 <img width="482" height="901" alt="image" src="https://github.com/user-attachments/assets/09c9d0ce-5622-4afb-aaf7-98c7e5097e31" />
 
-70. Find History node --> put it into right pane --> link it with Sort node
+#### 3.3.5 Add History Node
+1. Find the **History** node
+2. Drag and drop it to the canvas
+3. Link it with the **Sort** node
 
 <img width="885" height="218" alt="image" src="https://github.com/user-attachments/assets/636caa4c-627a-4749-96ac-a815d0eab567" />
 
-71. Click 2x History node --> click Add Columns button <img width="119" height="29" alt="image" src="https://github.com/user-attachments/assets/bbd82fe6-ec7e-4ca9-9a31-2149b8f9b66d" /> under Selected Fields section --> select CUSTOMER_ID and PURCHASE_PERIOD --> set Offset to "1" and Span to "1" --> click Save button
+#### 3.3.6 Configure History Node
+1. Double-click the **History** node
+2. Click the **Add Columns** button: <img width="119" height="29" alt="image" src="https://github.com/user-attachments/assets/bbd82fe6-ec7e-4ca9-9a31-2149b8f9b66d" /> under **Selected Fields** section
+3. Select **CUSTOMER_ID** and **PURCHASE_PERIOD**
+4. Set **Offset** to: `1`
+5. Set **Span** to: `1`
+6. Click the **Save** button
 
 <img width="479" height="907" alt="image" src="https://github.com/user-attachments/assets/4baf6cfb-813f-4d57-9b3a-b4441c26132c" />
 
-71. Click Preview Data icon in History node. From here you will see this node retrieve 1 prior purchase transaction date inside PURCHASE_PERIOD_1 column
+#### 3.3.7 Verify History Output
+1. Click the **Preview Data** icon on the History node
+2. Observe the **PURCHASE_PERIOD_1** column, which contains the prior purchase transaction date
 
 <img width="1078" height="422" alt="image" src="https://github.com/user-attachments/assets/0a588083-cbd2-4144-88dd-2b9832427e7a" />
 
-72. Add Select node --> link it with History node --> click 2x Select node --> type "CUSTOMER_ID = CUSTOMER_ID__1" --> click Save button
+#### 3.3.8 Add Select Node to Filter Same Customer
+1. Find the **Select** node
+2. Drag and drop it to the canvas
+3. Link it with the **History** node
+4. Double-click the **Select** node
+5. In the Expression Builder, enter: `CUSTOMER_ID = CUSTOMER_ID__1`
+6. Click the **Save** button
 
 <img width="714" height="757" alt="image" src="https://github.com/user-attachments/assets/95b80f12-cc0a-41c8-a089-fd56d1427fc3" />
 
-73. Since History node only rely on data order so we need to exclude prior transaction that has different CUSTOMER_ID value. To do that, put Select node into right pane, link it with History node, click it 2x and set Expression Builder field to "CUSTOMER_ID = CUSTOMER_ID__1". Click Save button.
+> **Note:** The History node relies on data order, so we need to exclude prior transactions with different CUSTOMER_ID values.
 
 <img width="478" height="905" alt="image" src="https://github.com/user-attachments/assets/840f1714-23ce-4c99-b737-30050df7a0fb" />
 
-74. Next we want to create new column to inform if a customer made repurchase transaction in next 6 months. To do that, put Derive node into right pane, link it with History node, click it 2x, set Derived Field Name to "REPURCHASE", type "if date_months_difference(PURCHASE_PERIOD__1, PURCHASE_PERIOD) > 0 and date_months_difference(PURCHASE_PERIOD__1, PURCHASE_PERIOD) <= 6 then "Y" else "N" endif" in Expression Builder field --> click Save button
+#### 3.3.9 Add Derive Node for Repurchase Label
+1. Find the **Derive** node
+2. Drag and drop it to the canvas
+3. Link it with the **Select** node
+4. Double-click the **Derive** node
+5. Set **Derived Field Name** to: `REPURCHASE`
+6. In the Expression Builder, enter:
+   ```
+   if date_months_difference(PURCHASE_PERIOD__1, PURCHASE_PERIOD) > 0 and date_months_difference(PURCHASE_PERIOD__1, PURCHASE_PERIOD) <= 6 then "Y" else "N" endif
+   ```
+7. Click the **Save** button
 
 <img width="483" height="906" alt="image" src="https://github.com/user-attachments/assets/9ba2c122-7efd-4047-95b7-8a70cb95b15e" />
 
-75. To standardize our columns in base user dataset, we will use Filter node. Do several tasks as below:
-
-* Add Filter node to right pane
-* Link it with Select node
-* Click 2x
-* Filter out TOTAL_PURCHASE_AMOUNT_Sum, GENDER, PURCHASE_PERIOD, CUSTOMER_ID__1
-* Change Output Field of PURCHASE_PERIOD__1 to "PURCHASE_PERIOD"
-* Click Save button
+#### 3.3.10 Add Filter Node to Standardize Columns
+1. Find the **Filter** node
+2. Drag and drop it to the canvas
+3. Link it with the **Derive** node
+4. Double-click the **Filter** node
+5. Perform the following tasks:
+   - **Filter out** (exclude) these fields:
+     - TOTAL_PURCHASE_AMOUNT_Sum
+     - GENDER
+     - PURCHASE_PERIOD
+     - CUSTOMER_ID__1
+   - **Rename** PURCHASE_PERIOD__1 to: `PURCHASE_PERIOD`
+6. Click the **Save** button
 
 <img width="964" height="862" alt="image" src="https://github.com/user-attachments/assets/12aacde4-22f4-4abe-bc63-00940f67bd6c" />
 
-76. Click Preview Data icon in Filter node to see latest data view
+#### 3.3.11 Verify Filtered Data
+- Click the **Preview Data** icon on the Filter node to review the final dataset structure
 
 <img width="594" height="650" alt="image" src="https://github.com/user-attachments/assets/02849627-85a7-40bb-af2f-282586336ace" />
 
-77. Add Data Asset Export node to right field and link it with Filter node --> click it 2x --> click Change Data Asset button --> select 
-Connection --> select cos-connection --> select your bucket name --> type "BASE_USER" in New Item --> click Select button
+#### 3.3.12 Add Export Node
+1. Find the **Data Asset Export** node
+2. Drag and drop it to the canvas
+3. Link it with the **Filter** node
+4. Double-click the **Data Asset Export** node
+5. Click the **Change Data Asset** button
+6. Select **Connection**
+7. Select **cos-connection**
+8. Select your bucket name
+9. In the **New Item** field, enter: `BASE_USER`
+10. Click the **Select** button
 
 <img width="1773" height="897" alt="image" src="https://github.com/user-attachments/assets/d3948096-e59d-410e-9624-eb98d3c8f2b0" />
 
-78. Change File Format to CSV --> click Save button
+#### 3.3.13 Set File Format
+1. Change **File Format** to **CSV**
+2. Click the **Save** button
 
 <img width="625" height="470" alt="image" src="https://github.com/user-attachments/assets/d9fa3f33-0e9f-4ad5-950c-d9b3ed7b527e" />
 
-79. Click Run All button <img width="99" height="29" alt="image" src="https://github.com/user-attachments/assets/90ac25bf-17a4-479b-a75c-3609883edf7e" /> to generate BASE_USER.csv
+#### 3.3.14 Execute the Flow
+1. Click the **Run All** button: <img width="99" height="29" alt="image" src="https://github.com/user-attachments/assets/90ac25bf-17a4-479b-a75c-3609883edf7e" />
+2. Wait for BASE_USER.csv to be generated
 
 <img width="1666" height="402" alt="image" src="https://github.com/user-attachments/assets/14762ab8-212a-4dd8-bd7e-701b28e43d62" />
 
-### Create Feature Store
+---
 
-Notes:
-Feature store is collection of features or attributes that will be used to develop machine learning model. We will use columns generated in our last 3, 6, and 12 months table for this feature store.
+### 3.4 Create Feature Store
 
-80. Go to Asset tab --> create new SPSS Modeler asset named "04-Create Feature Store"
+**Objective:** Build a feature store containing all attributes needed for machine learning model development. This will combine features from the 3, 6, and 12-month aggregated tables.
+
+#### 3.4.1 Create New SPSS Modeler Asset
+1. Go to the **Asset** tab
+2. Create a new **SPSS Modeler** asset
+3. Set **Name** to: `04-Create Feature Store`
+4. Click the **Create** button
 
 <img width="1823" height="895" alt="image" src="https://github.com/user-attachments/assets/ad5fa62e-92f5-4b80-b4e4-6d328f524655" />
 
-81. Add Data Asset node into right pane --> select Connection --> select cos-connection --> select your bucket name --> select BASE_USER.csv --> click Select button 
+#### 3.4.2 Add BASE_USER Data Asset
+1. Drag and drop a **Data Asset** node to the canvas
+2. Double-click the node
+3. Select **Connection**
+4. Select **cos-connection**
+5. Select your bucket name
+6. Select **BASE_USER.csv**
+7. Click the **Select** button
 
 <img width="1771" height="897" alt="image" src="https://github.com/user-attachments/assets/49b083e6-4a38-4c41-b8be-459d32425d01" />
 
-82. Click Save button
+#### 3.4.3 Save BASE_USER Configuration
+- Click the **Save** button
 
-83. Add Data Asset node into right pane --> select Connection --> select cos-connection --> select your bucket name --> select CUSTOMER_PURCHASE_L3M.csv --> click Select button 
+#### 3.4.4 Add L3M Data Asset
+1. Drag and drop another **Data Asset** node to the canvas
+2. Double-click the node
+3. Select **Connection**
+4. Select **cos-connection**
+5. Select your bucket name
+6. Select **CUSTOMER_PURCHASE_L3M.csv**
+7. Click the **Select** button
 
 <img width="1778" height="899" alt="image" src="https://github.com/user-attachments/assets/e274d075-fea7-4139-9c6e-33bcf1e896cd" />
 
-84. Click Save button
+#### 3.4.5 Save L3M Configuration
+- Click the **Save** button
 
-85. Add Merge node into right pane --> first, link it to BASE_USER Data Asset node --> second, link it to CUSTOMER_PURCHASE_L3M Data Asset node
+#### 3.4.6 Add Merge Node for L3M
+1. Drag and drop a **Merge** node to the canvas
+2. Link the **BASE_USER** Data Asset node to the Merge node (first connection)
+3. Link the **CUSTOMER_PURCHASE_L3M** Data Asset node to the Merge node (second connection)
 
 <img width="806" height="428" alt="image" src="https://github.com/user-attachments/assets/dba54406-464c-4be0-9523-aeb8c0be6f51" />
 
-86. Click 2x Merge node --> ensure that your view is same with image below --> then click Save button
+#### 3.4.7 Configure L3M Merge
+1. Double-click the **Merge** node
+2. Verify the configuration matches the image below
+3. Click the **Save** button
 
 <img width="577" height="907" alt="image" src="https://github.com/user-attachments/assets/4a470ed4-4f05-425f-a3a7-65d02269f813" />
 
-87. Repeat step 83-86 with Data Asset CUSTOMER_PURCHASE_L6M.csv and CUSTOMER_PURCHASE_L12M.csv. Below is the image that shows end to end flow with the data preview.
+#### 3.4.8 Add L6M and L12M Data Assets
+Repeat steps 3.4.4 through 3.4.7 for:
+1. **CUSTOMER_PURCHASE_L6M.csv**
+2. **CUSTOMER_PURCHASE_L12M.csv**
+
+The image below shows the complete end-to-end flow with data preview:
 
 <img width="1530" height="714" alt="image" src="https://github.com/user-attachments/assets/33d4ced1-73b2-43b7-94b5-ddcea263e4a9" />
 
-88. Last, export it to CSV file named "FEATURE_STORE.csv" in cos-connection using Data Asset Export node.
+#### 3.4.9 Export Feature Store
+1. Add a **Data Asset Export** node to the canvas
+2. Link it to the final Merge node
+3. Configure the export:
+   - **Connection**: cos-connection
+   - **File Name**: `FEATURE_STORE.csv`
+   - **File Format**: CSV
+4. Click the **Save** button
 
 <img width="574" height="910" alt="image" src="https://github.com/user-attachments/assets/ba5b133d-869c-4a50-b9b3-4f019f6d1eab" />
 
-89. Click Run All button <img width="87" height="25" alt="image" src="https://github.com/user-attachments/assets/4138fd35-57d5-4f95-9256-1284245653e5" /> --> to generate feature store that will be used for as training data to build repurchase model
+#### 3.4.10 Execute Feature Store Creation
+1. Click the **Run All** button: <img width="87" height="25" alt="image" src="https://github.com/user-attachments/assets/4138fd35-57d5-4f95-9256-1284245653e5" />
+2. Wait for the process to complete
+3. Verify that **FEATURE_STORE.csv** has been created in your COS bucket
+
+**Result:** The feature store is now ready to be used as training data for building the repurchase prediction model.
 
 <img width="1689" height="522" alt="image" src="https://github.com/user-attachments/assets/2990eb46-f3e5-4b93-b96a-7063dbdab098" />
 
