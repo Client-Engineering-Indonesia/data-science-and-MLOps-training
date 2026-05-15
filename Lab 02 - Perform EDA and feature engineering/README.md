@@ -710,5 +710,6 @@ The image below shows the complete end-to-end flow with data preview:
 
 **Result:** The feature store is now ready to be used as training data for building the repurchase prediction model.
 
-<img width="1689" height="522" alt="image" src="https://github.com/user-attachments/assets/2990eb46-f3e5-4b93-b96a-7063dbdab098" />
+<img width="1147" height="52" alt="image" src="https://github.com/user-attachments/assets/771f93dd-5c30-42c9-a7a0-7ec9e615a1ac" />
+
 
