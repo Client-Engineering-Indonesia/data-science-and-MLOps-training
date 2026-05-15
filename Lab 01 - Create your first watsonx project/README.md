@@ -39,7 +39,7 @@ Ensure you have received your credentials for this lab.
 
 <img width="861" height="75" alt="image" src="https://github.com/user-attachments/assets/83f53b56-7c67-4846-9495-cd7d99d9e80d" />
 
-### Create watsonx project
+### Create watsonx Project
 
 9. Go back to the watsonx main page by clicking <img width="112" height="36" alt="image" src="https://github.com/user-attachments/assets/b44e98d1-e58f-43ff-95ff-3c988eaeddab" /> → scroll down to the **Projects** section → click the **+** icon
 
@@ -49,7 +49,7 @@ Ensure you have received your credentials for this lab.
 
 <img width="1920" height="943" alt="image" src="https://github.com/user-attachments/assets/5ad5d34a-c2a4-41ee-80e3-4fad40650d5d" />
 
-### Create connection
+### Create Db2 Connection
 
 11. Go to the **Asset** tab → click <img width="149" height="52" alt="image" src="https://github.com/user-attachments/assets/dd5171ad-7312-4b44-976a-47dd550b405c" /> → find **Connect to a data source** and click it
 
@@ -83,3 +83,37 @@ Ensure you have received your credentials for this lab.
 <img width="555" height="48" alt="image" src="https://github.com/user-attachments/assets/aa056f83-36a1-4315-9a3e-e0d00eae4f52" />
 
 
+### Create Cloud Object Storage (COS) Connection
+
+#### Get IBM COS Credential
+
+Notes:
+Before we move forward, you need to get COS credentials. Please follow this step to do it.
+
+18. Open new tab in your browser --> go back to IBM Cloud Resource page (https://cloud.ibm.com/resources) --> expand Storage section --> find Cloud Object Storage instance and click it --> for my case it is "itzcos-664004cgmn-9e5s2su9"
+
+<img width="1824" height="86" alt="image" src="https://github.com/user-attachments/assets/4d5ea02b-00ac-4fc0-b0a1-85cca8eb15f8" />
+
+19. Find bucket that is being used by your project (normally it begins with project name followed with random character) --> please remember the name
+
+<img width="1596" height="119" alt="image" src="https://github.com/user-attachments/assets/bc45c806-0ed7-47ff-8ca4-6203e3fee650" />
+
+20. Go to Service Credentials tab --> expand credentials with this format WDP-Editor-<your bucket name> --> you will find credentials to create Connection to your COS bucket
+
+<img width="1622" height="672" alt="image" src="https://github.com/user-attachments/assets/af3576d5-1256-4dbe-a8a4-b31cbb9f5eb5" />
+
+### Create COS Connection
+
+21. Go to the **Asset** tab → click <img width="149" height="52" alt="image" src="https://github.com/user-attachments/assets/dd5171ad-7312-4b44-976a-47dd550b405c" /> → find **Connect to a data source** and click it
+
+<img width="321" height="242" alt="image" src="https://github.com/user-attachments/assets/893b5b23-d88a-4a75-91b3-9f63fa389808" />
+
+22. Type "cloud object" in search field --> select IBM Cloud Object Storage under Data source types --> select IBM Cloud Object Storage in right section --> click Next button
+
+<img width="1825" height="883" alt="image" src="https://github.com/user-attachments/assets/200e550f-cbc4-4a81-8c9a-f7f4c02fc748" />
+
+23. Set Name to "cos-connection"
+
+<img width="1025" height="367" alt="image" src="https://github.com/user-attachments/assets/e554f44c-47d9-44f0-8066-6dab61c148b5" />
+
+24. 
