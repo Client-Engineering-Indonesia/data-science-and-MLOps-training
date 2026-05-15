@@ -91,38 +91,38 @@ Derive node enables you to create new column from existing table
 
 <img width="477" height="406" alt="image" src="https://github.com/user-attachments/assets/35440103-34b8-4087-98c6-9b76c845efb3" />
 
-17. Click Launch Expression Builder icon <img width="23" height="26" alt="image" src="https://github.com/user-attachments/assets/e3e2188a-9bb0-4b99-8a64-1b1e7d23c261" /> --> set Expression to "datetime_date(datetime_year(PURCHASE_DATE), datetime_month(PURCHASE_DATE), 1) " --> click Validate and ensure your formula is correct --> click OK button
+17. Click Launch Expression Builder icon <img width="23" height="26" alt="image" src="https://github.com/user-attachments/assets/e3e2188a-9bb0-4b99-8a64-1b1e7d23c261" /> --> set Expression to "date_add_days(-1, date_add_months(1, datetime_date(datetime_year(PURCHASE_DATE), datetime_month(PURCHASE_DATE), 1) ) )" --> click Validate and ensure your formula is correct --> click OK button
 
 <img width="1777" height="894" alt="image" src="https://github.com/user-attachments/assets/a0e649ed-9f57-4968-92a0-120675f02a3f" />
 
 Notes:
-For this lab session, we use some functions to convert PURCHASE_DATE to year-and-month-FirstDateOfTheMonth format (YYYY-mm-01). If you have different logic, you can explore other function as well.
+For this lab session, we use some functions to convert PURCHASE_DATE to year-and-month-FirstDateOfTheMonth format (YYYY-mm-01). Logic in step 17 will convert purchase transaction date into end of month date. If you have different logic, you can explore other function as well.
 
 18. Click Save button
 
-<img width="481" height="904" alt="image" src="https://github.com/user-attachments/assets/59b46740-adcf-4e2f-9d9b-6d9ce9e3c47b" />
+<img width="475" height="898" alt="image" src="https://github.com/user-attachments/assets/ad189615-c028-4c35-a1cd-b94161ad6f7f" />
 
 19. Hover your mouse to Derive node --> click Preview icon --> here you will see new added column named "PURCHASE_PERIOD"
 
-<img width="1653" height="636" alt="image" src="https://github.com/user-attachments/assets/4f409e08-bcb9-479b-91a1-1af843561a34" />
+<img width="1658" height="668" alt="image" src="https://github.com/user-attachments/assets/fdfa4dc7-6909-4622-919f-8deae4c0ad1d" />
 
 20. Find Aggregate node --> drag and drop it to right pane --> link it with Derive node
 
 <img width="929" height="251" alt="image" src="https://github.com/user-attachments/assets/9fb0d5ab-8ff6-4f6c-a600-3db086898034" />
 
-17. Click 2x Aggregate node --> click Add Columns button under Key Fields section
+21. Click 2x Aggregate node --> click Add Columns button under Key Fields section
 
 <img width="213" height="115" alt="image" src="https://github.com/user-attachments/assets/996d4d1d-1594-4f06-9ecb-ef6b3f146799" />
 
-18. Select CUSTOMER_ID, GENDER, and PURCHASE_PERIOD --> click OK button
+22. Select CUSTOMER_ID, GENDER, and PURCHASE_PERIOD --> click OK button
 
 <img width="673" height="905" alt="image" src="https://github.com/user-attachments/assets/18d3f7cc-2606-445c-97e2-1c969bc2d3a5" />
 
-19. Scroll down to Default Mode section --> select SUM
+23. Scroll down to Default Mode section --> select SUM
 
 <img width="625" height="388" alt="image" src="https://github.com/user-attachments/assets/d95197eb-79fa-4f70-8168-0ac35a8c1d23" />
 
-20. Scroo up a bit to Aggregate Fields section --> click Add Columns button 
+24. Scroll up a bit to Aggregate Fields section --> click Add Columns button 
 
 <img width="199" height="110" alt="image" src="https://github.com/user-attachments/assets/702ee163-bf32-4c6b-99cf-c7932d35fb62" />
 
@@ -132,11 +132,11 @@ For this lab session, we use some functions to convert PURCHASE_DATE to year-and
 
 22. Tick-off Include Record Count --> click Save button
 
-<img width="632" height="595" alt="image" src="https://github.com/user-attachments/assets/4c6f0809-2bc0-4f5a-87c1-b74d862844e1" />
+<img width="636" height="899" alt="image" src="https://github.com/user-attachments/assets/e3cadd51-5451-4730-826c-5a160dbb86c4" />
 
 23. Now you will get monthly purchase transaction for each individual customer. You can check how the data looks like by click Preview data. From the image below each transaction has been aggregated to Customer and purchase transaction period (year,month).
 
-<img width="713" height="619" alt="image" src="https://github.com/user-attachments/assets/b2c6c776-b3bb-4d0e-8a89-b63636787b17" />
+<img width="1239" height="644" alt="image" src="https://github.com/user-attachments/assets/12a94603-b0da-4f5b-92db-340ff06a1e05" />
 
 24. Next we are going to export the result into a CSV file stored in cos-connection that we have built previously. To do this, find Data Asset Export node, drag and drop it to right pane, and link it with Aggregate node.
 
@@ -170,4 +170,7 @@ Guideline to see all files in your COS bucket:
 * Here you will see list of existing buckets in Buckets tab --> to know your project bucket name, you must understand this format <YourProjectName>-<RandomCharacters> --> for my case it is "repurchasemodel-donotdelete-pr-spincdlcpmf5ao" with "repurchasemodel" known as my project name and "donotdelete-pr-spincdlcpmf5ao" is random characters generated automatically once you have created watsonx project
 
 <img width="1619" height="412" alt="image" src="https://github.com/user-attachments/assets/832fd5a5-f973-4a17-9fde-2b1c7abf5b43" />
+
+### Create Monthly Purchase Transaction Table in Last 3, 6, and 12 Months
+
 
