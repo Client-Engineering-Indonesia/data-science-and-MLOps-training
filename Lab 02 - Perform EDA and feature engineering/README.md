@@ -1,4 +1,4 @@
-<img width="819" height="353" alt="image" src="https://github.com/user-attachments/assets/397564c4-41dc-4647-84eb-8d7a421853f2" /># Perform Exploratory Data Analysis (EDA) and Feature Engineering
+# Perform Exploratory Data Analysis (EDA) and Feature Engineering
 
 Overview:
 * In this session, you will use a table that contains individual customer purchase transaction from e-commerce company.
