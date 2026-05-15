@@ -123,14 +123,30 @@ The AutoAI experiment will generate multiple pipelines with different algorithms
 
 <img width="1510" height="328" alt="image" src="https://github.com/user-attachments/assets/f5924a18-60b7-4fa2-8baf-690780c79579" />
 
-## 1.10 Select Best Pipeline
+## 1.10 Understand Pipeline Analysis
+
+1. Select completed pipeline (in this example, it's Pipeline 1) and click it
+2. There are several analysis provided once pipeline is completed. Some that are mostly used by data scientist are:
+   - Model evaluation: explains how good the model performance measured by optimized metric
+
+     <img width="1008" height="884" alt="image" src="https://github.com/user-attachments/assets/1c7e1486-da50-47ba-94be-5b085b78098e" />
+
+   - Confusion matrix: shows the data distribution of actual vs prediction 
+
+     <img width="1397" height="536" alt="image" src="https://github.com/user-attachments/assets/ddd3c4c7-dc38-45a4-944a-0bd435ae7193" />
+
+   - Feature summary: explains how the feature importance impacts to prediction result
+
+     <img width="1396" height="630" alt="image" src="https://github.com/user-attachments/assets/4b2e1baa-19e1-4e16-8109-405c0469ade1" />
+
+## 1.11 Select Best Pipeline
 
 1. Select the pipeline with the **highest rank** (in this example, it's Pipeline 5)
 2. Click the **Save As** button
 
 <img width="1818" height="66" alt="image" src="https://github.com/user-attachments/assets/8ffce624-052d-49b7-9258-3fac21f2e31d" />
 
-## 1.11 Save the Model
+## 1.12 Save the Model
 
 1. Set **Asset Type** to: **Model**
 2. Leave **Name** as default
