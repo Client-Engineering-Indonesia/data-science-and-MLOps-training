@@ -45,7 +45,7 @@ Ensure you have received your credentials for this lab.
 
 <img width="1137" height="903" alt="image" src="https://github.com/user-attachments/assets/53238ddc-6485-4ae4-8a10-8f01ffd601ff" />
 
-10. Set **Name** to "Churn Model" → click the **Create** button
+10. Set **Name** to "Repurchase Model" → click the **Create** button
 
 <img width="1920" height="943" alt="image" src="https://github.com/user-attachments/assets/5ad5d34a-c2a4-41ee-80e3-4fad40650d5d" />
 
