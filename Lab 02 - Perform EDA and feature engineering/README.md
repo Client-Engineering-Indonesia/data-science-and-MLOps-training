@@ -1,8 +1,12 @@
 # Perform Exploratory Data Analysis (EDA) and Feature Engineering
 
 Overview:
-
-In this session, you will use a table that contains individual customer purchase transaction from e-commerce company. Then we will create repurchase model to identify which customers who are most likely to purchase again in next 6 months after they made latest purchase.
+* In this session, you will use a table that contains individual customer purchase transaction from e-commerce company.
+* We will create repurchase model to identify which customers who are most likely to purchase again in next 6 months after they made latest purchase.
+* To do this, we will aggregate transactions into monthly basis and use last 12 months to generate customer repurchase probability score (ranging from 0 < score < 1).
+* If score is less than or equal to 0.5, the prediction result is "customer will not repurchase in next 6 months"
+* If score is greater than 0.5, the prediction result is "customer will repurchase in next 6 months"
+* This model will be run on monthly basis on end-of-month
 
 ## Create SPSS Modeler Asset
 
@@ -67,6 +71,9 @@ For training purposes, we will focus on several columns as below:
 
 ### Create Monthly Purchase Transaction Table
 
+Overview:
+We will aggregate each purchase transaction into monthly basis to enable the model run every end-of-month.
+
 13. Go back to Asset tab and create new SPSS Modeler asset --> set Name to "01-Customer Monthly Transaction" --> leave Environment Definition as default --> click Create button
 
 <img width="1814" height="879" alt="image" src="https://github.com/user-attachments/assets/56b80c76-4732-488e-9043-73f48e1946c5" />
@@ -84,26 +91,22 @@ Derive node enables you to create new column from existing table
 
 <img width="477" height="406" alt="image" src="https://github.com/user-attachments/assets/35440103-34b8-4087-98c6-9b76c845efb3" />
 
-17. Click Launch Expression Builder icon <img width="23" height="26" alt="image" src="https://github.com/user-attachments/assets/e3e2188a-9bb0-4b99-8a64-1b1e7d23c261" /> --> set Expression to "datetime_year(PURCHASE_DATE) >< "-" >< datetime_month(PURCHASE_DATE)" --> click Validate and ensure your formula is correct --> click OK button
+17. Click Launch Expression Builder icon <img width="23" height="26" alt="image" src="https://github.com/user-attachments/assets/e3e2188a-9bb0-4b99-8a64-1b1e7d23c261" /> --> set Expression to "datetime_date(datetime_year(PURCHASE_DATE), datetime_month(PURCHASE_DATE), 1) " --> click Validate and ensure your formula is correct --> click OK button
 
-<img width="1776" height="900" alt="image" src="https://github.com/user-attachments/assets/fa1553ee-ab2d-4e25-afc5-bde08334f869" />
+<img width="1777" height="894" alt="image" src="https://github.com/user-attachments/assets/a0e649ed-9f57-4968-92a0-120675f02a3f" />
 
 Notes:
-For this lab session, we use some functions to convert PURCHASE_DATE to year-and-month format (YYYY-mm). If you have different logic, you can explore other function as well.
+For this lab session, we use some functions to convert PURCHASE_DATE to year-and-month-FirstDateOfTheMonth format (YYYY-mm-01). If you have different logic, you can explore other function as well.
 
 18. Click Save button
 
-<img width="470" height="322" alt="image" src="https://github.com/user-attachments/assets/285a7cf9-aaec-417d-84ee-43091cf4b7be" />
+<img width="481" height="904" alt="image" src="https://github.com/user-attachments/assets/59b46740-adcf-4e2f-9d9b-6d9ce9e3c47b" />
 
-14. Redo step 3-4 --> find Aggregate node --> drag and drop it into right pane --> link Data Asset node with Aggregate node
+19. Hover your mouse to Derive node --> click Preview icon --> here you will see new added column named "PURCHASE_PERIOD"
 
-<img width="748" height="331" alt="image" src="https://github.com/user-attachments/assets/6706d80a-a8e2-46a4-8d92-16eb3265bcd4" />
+<img width="1653" height="636" alt="image" src="https://github.com/user-attachments/assets/4f409e08-bcb9-479b-91a1-1af843561a34" />
 
-15. Hover your mouse to Derive node --> click Preview icon --> here you will see new added column named "PURCHASE_PERIOD"
-
-<img width="1653" height="671" alt="image" src="https://github.com/user-attachments/assets/74fa3c12-d3c9-48a8-af21-b8fb411437df" />
-
-16. Find Aggregate node --> drag and drop it to right pane --> link it with Derive node
+20. Find Aggregate node --> drag and drop it to right pane --> link it with Derive node
 
 <img width="929" height="251" alt="image" src="https://github.com/user-attachments/assets/9fb0d5ab-8ff6-4f6c-a600-3db086898034" />
 
