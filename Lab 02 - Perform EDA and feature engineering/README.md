@@ -705,11 +705,16 @@ The image below shows the complete end-to-end flow with data preview:
 
 #### 3.4.10 Execute Feature Store Creation
 1. Click the **Run All** button: <img width="87" height="25" alt="image" src="https://github.com/user-attachments/assets/4138fd35-57d5-4f95-9256-1284245653e5" />
+
+<img width="1207" height="348" alt="image" src="https://github.com/user-attachments/assets/38b360f2-2772-4551-8e0a-67f9c10d9c64" />
+
 2. Wait for the process to complete
 3. Verify that **FEATURE_STORE.csv** has been created in your COS bucket
 
+<img width="1147" height="52" alt="image" src="https://github.com/user-attachments/assets/771f93dd-5c30-42c9-a7a0-7ec9e615a1ac" />
+
 **Result:** The feature store is now ready to be used as training data for building the repurchase prediction model.
 
-<img width="1147" height="52" alt="image" src="https://github.com/user-attachments/assets/771f93dd-5c30-42c9-a7a0-7ec9e615a1ac" />
+
 
 
