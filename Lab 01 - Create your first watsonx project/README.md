@@ -49,3 +49,28 @@ Ensure you have received your credentials for this lab.
 
 <img width="1920" height="943" alt="image" src="https://github.com/user-attachments/assets/5ad5d34a-c2a4-41ee-80e3-4fad40650d5d" />
 
+### Create connection
+
+11. Find Connect to a data source and click it
+
+<img width="321" height="242" alt="image" src="https://github.com/user-attachments/assets/893b5b23-d88a-4a75-91b3-9f63fa389808" />
+
+12. Type "db2" in Search field --> select IBM Db2 --> ensure IBM Db2 in right page is selected --> click Next button
+
+<img width="321" height="242" alt="image" src="https://github.com/user-attachments/assets/00d68214-f772-487b-8bd3-9ee038471a56" />
+
+13. Set Name to "db2-connection" in Connection overview section
+
+<img width="321" height="242" alt="image" src="https://github.com/user-attachments/assets/28d7aad8-9530-4932-997e-471350500f0e" />
+
+14. Set Hostname to "54a2f15b-5c0f-46df-8954-7e38e612c2bd.c1ogj3sd0tgtu0lqde00.databases.appdomain.cloud" --> Set Port to "32733" --> Set Database to "bludb"
+
+<img width="1066" height="600" alt="image" src="https://github.com/user-attachments/assets/37cadecb-e65d-4e96-9142-e46eb72cbf66" />
+
+
+
+
+
+11. Go to Asset tab --> click <img width="149" height="52" alt="image" src="https://github.com/user-attachments/assets/dd5171ad-7312-4b44-976a-47dd550b405c" /> 
+
+
