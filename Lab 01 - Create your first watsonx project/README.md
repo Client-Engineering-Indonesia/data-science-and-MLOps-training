@@ -45,17 +45,17 @@ Ensure you have received your credentials for this lab.
 
 <img width="1137" height="903" alt="image" src="https://github.com/user-attachments/assets/53238ddc-6485-4ae4-8a10-8f01ffd601ff" />
 
-10. Set **Name** to "Repurchase Model" → click the **Create** button
+10. Set **Name** to "Churn Model" → click the **Create** button
 
 <img width="1920" height="984" alt="image" src="https://github.com/user-attachments/assets/f286890b-665a-4b54-9e0c-ace2c8a90663" />
 
 ## Associate watsonx Service
 
-11. Go to Manage tab --> select Services & Integrations --> click Associate Service button
+11. Go to the **Manage** tab → select **Services & Integrations** → click the **Associate Service** button
 
 <img width="1904" height="445" alt="image" src="https://github.com/user-attachments/assets/882827f0-6588-449b-843a-3c9bf7d4f2e7" />
 
-12. Select available watsonx service --> click Associate button
+12. Select the available watsonx service → click the **Associate** button
 
 <img width="1780" height="896" alt="image" src="https://github.com/user-attachments/assets/55899fc8-38db-4659-bdf8-08930a08c37f" />
 
@@ -96,14 +96,14 @@ Ensure you have received your credentials for this lab.
 
 ## Create Cloud Object Storage (COS) Connection
 
-20. Click Select Instance button under Integrated instance section
+20. Click the **Select Instance** button under the **Integrated instance** section
 
 <img width="782" height="173" alt="image" src="https://github.com/user-attachments/assets/e50dfc64-0363-4b9c-aa94-4f11b3fa81e2" />
 
-21. Select available instance (for my case it is itzcos-664004cgmn-9e5s2su9) --> click Select button
+21. Select the available instance (e.g., "itzcos-664004cgmn-9e5s2su9") → click the **Select** button
 
 <img width="648" height="796" alt="image" src="https://github.com/user-attachments/assets/54e1b362-cff4-42e1-ab2c-8c6e280923d2" />
 
-22. Change Name to "cos-connection" --> click Create button
+22. Change **Name** to "cos-connection" → click the **Create** button
 
 <img width="1812" height="878" alt="image" src="https://github.com/user-attachments/assets/68f61452-1a92-4f00-bf5e-6ad6699e6de1" />
