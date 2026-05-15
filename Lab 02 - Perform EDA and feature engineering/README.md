@@ -202,7 +202,7 @@ Now we are going to use CUSTOMER_MONTHLY_PURCHASE.csv as our base table to creat
 
 <img width="869" height="40" alt="image" src="https://github.com/user-attachments/assets/1352b7cd-53f0-485d-8a36-22157e6b4551" />
 
-* Tick-on TOTAL_PURCHASE_ANOUNT from first Data Asset node (Tag = 1) to this field when processing the output
+* Tick-on TOTAL_PURCHASE_ANOUNT from first Data Asset node (Tag = 1) to exclude this field when processing the output
 
 <img width="869" height="31" alt="image" src="https://github.com/user-attachments/assets/30fbc804-9f65-480c-ac8c-7b7a27b6939c" />
 
@@ -352,11 +352,85 @@ Now we are going to use CUSTOMER_MONTHLY_PURCHASE.csv as our base table to creat
 
 <img width="897" height="916" alt="image" src="https://github.com/user-attachments/assets/ca3fc6a8-db84-474e-a8e7-db48351a8b05" />
 
-57. Click Preview Data icon in Aggregate node to ensure the data is as expected
+64. Click Preview Data icon in Aggregate node to ensure the data is as expected
 
 <img width="1257" height="642" alt="image" src="https://github.com/user-attachments/assets/f9403d8a-b73b-4c0f-851f-0641315e37b6" />
 
-57. Click Run All button <img width="95" height="27" alt="image" src="https://github.com/user-attachments/assets/6dc2099e-3b56-4c21-9167-faa882f080ae" /> and wait until process completed
+65. Click Run All button <img width="95" height="27" alt="image" src="https://github.com/user-attachments/assets/6dc2099e-3b56-4c21-9167-faa882f080ae" /> and wait until process completed
 
+### Create Base User
 
+Notes:
+Base user is created to get ground truth of repurchase activity. So we are going to create customer data together with its actual purchase transaction in next 6 months. Label 0 means customer didn't repurchase in next 6 months and label 1 means customer repurchase in next 6 months.
 
+66. Go to Asset tab --> select SPSS Modeler asset --> set Name to "03-Create Base User" --> click Create button
+
+<img width="1814" height="882" alt="image" src="https://github.com/user-attachments/assets/20010827-09f8-429a-a133-60559a2e53d8" />
+
+67. Drag and drop Data Asset node into right pane --> click 2x --> then select Connection --> select cos-connection --> select your bucket name --> select CUSTOMER_MONTHLY_PURCHASE.csv --> click Select Button
+
+<img width="1779" height="894" alt="image" src="https://github.com/user-attachments/assets/36da53f1-63fa-4056-97f2-54ad08ffe113" />
+
+68. Find Sort node --> put it into right pane --> link it with Data Asset node
+
+<img width="706" height="329" alt="image" src="https://github.com/user-attachments/assets/638122a2-116e-49b4-b9c9-663f1991c311" />
+
+69. Click 2x Sort node --> Click Add Columns button <img width="127" height="33" alt="image" src="https://github.com/user-attachments/assets/34cc7124-2ee1-4138-902f-45641fa51cbb" /> --> select CUSTOMER_ID and PURCHASE_PERIOD --> click Save button
+
+<img width="482" height="901" alt="image" src="https://github.com/user-attachments/assets/09c9d0ce-5622-4afb-aaf7-98c7e5097e31" />
+
+70. Find History node --> put it into right pane --> link it with Sort node
+
+<img width="885" height="218" alt="image" src="https://github.com/user-attachments/assets/636caa4c-627a-4749-96ac-a815d0eab567" />
+
+71. Click 2x History node --> click Add Columns button <img width="119" height="29" alt="image" src="https://github.com/user-attachments/assets/bbd82fe6-ec7e-4ca9-9a31-2149b8f9b66d" /> under Selected Fields section --> select CUSTOMER_ID and PURCHASE_PERIOD --> set Offset to "1" and Span to "1" --> click Save button
+
+<img width="479" height="907" alt="image" src="https://github.com/user-attachments/assets/4baf6cfb-813f-4d57-9b3a-b4441c26132c" />
+
+71. Click Preview Data icon in History node. From here you will see this node retrieve 1 prior purchase transaction date inside PURCHASE_PERIOD_1 column
+
+<img width="1078" height="422" alt="image" src="https://github.com/user-attachments/assets/0a588083-cbd2-4144-88dd-2b9832427e7a" />
+
+72. Add Select node --> link it with History node --> click 2x Select node --> type "CUSTOMER_ID = CUSTOMER_ID__1" --> click Save button
+
+<img width="714" height="757" alt="image" src="https://github.com/user-attachments/assets/95b80f12-cc0a-41c8-a089-fd56d1427fc3" />
+
+73. Since History node only rely on data order so we need to exclude prior transaction that has different CUSTOMER_ID value. To do that, put Select node into right pane, link it with History node, click it 2x and set Expression Builder field to "CUSTOMER_ID = CUSTOMER_ID__1". Click Save button.
+
+<img width="478" height="905" alt="image" src="https://github.com/user-attachments/assets/840f1714-23ce-4c99-b737-30050df7a0fb" />
+
+74. Next we want to create new column to inform if a customer made repurchase transaction in next 6 months. To do that, put Derive node into right pane, link it with History node, click it 2x, set Derived Field Name to "REPURCHASE", type "if date_months_difference(PURCHASE_PERIOD__1, PURCHASE_PERIOD) > 0 and date_months_difference(PURCHASE_PERIOD__1, PURCHASE_PERIOD) <= 6 then "Y" else "N" endif" in Expression Builder field --> click Save button
+
+<img width="483" height="906" alt="image" src="https://github.com/user-attachments/assets/9ba2c122-7efd-4047-95b7-8a70cb95b15e" />
+
+75. To standardize our columns in base user dataset, we will use Filter node. Do several tasks as below:
+
+* Add Filter node to right pane
+* Link it with Select node
+* Click 2x
+* Filter out TOTAL_PURCHASE_AMOUNT_Sum, GENDER, PURCHASE_PERIOD, CUSTOMER_ID__1
+* Change Output Field of PURCHASE_PERIOD__1 to "PURCHASE_PERIOD"
+* Click Save button
+
+<img width="964" height="862" alt="image" src="https://github.com/user-attachments/assets/12aacde4-22f4-4abe-bc63-00940f67bd6c" />
+
+76. Click Preview Data icon in Filter node to see latest data view
+
+<img width="594" height="650" alt="image" src="https://github.com/user-attachments/assets/02849627-85a7-40bb-af2f-282586336ace" />
+
+77. Add Data Asset Export node to right field and link it with Filter node --> click it 2x --> click Change Data Asset button --> select 
+Connection --> select cos-connection --> select your bucket name --> type "BASE_USER" in New Item --> click Select button
+
+<img width="1773" height="897" alt="image" src="https://github.com/user-attachments/assets/d3948096-e59d-410e-9624-eb98d3c8f2b0" />
+
+78. Change File Format to CSV --> click Save button
+
+<img width="625" height="470" alt="image" src="https://github.com/user-attachments/assets/d9fa3f33-0e9f-4ad5-950c-d9b3ed7b527e" />
+
+79. Click Run All button <img width="99" height="29" alt="image" src="https://github.com/user-attachments/assets/90ac25bf-17a4-479b-a75c-3609883edf7e" /> to generate BASE_USER.csv
+
+<img width="1666" height="402" alt="image" src="https://github.com/user-attachments/assets/14762ab8-212a-4dd8-bd7e-701b28e43d62" />
+
+### Create Feature Store
+
+80. 
