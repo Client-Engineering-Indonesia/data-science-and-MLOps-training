@@ -18,7 +18,7 @@ Before starting this lab, ensure you have received your credentials (username, p
 1. Click the **hamburger menu icon** (☰) in the top left corner
 2. Select **Resource list** from the menu
 
-<img width="418" height="433" alt="Screenshot 2026-05-15 at 11 01 45 AM" src="https://github.com/user-attachments/assets/eb6d6da7-f3f2-47a3-97b9-8d1b4a80c0c9" />
+<img width="260" height="194" alt="image" src="https://github.com/user-attachments/assets/e3c3d789-585b-4dd5-bd4a-4cfea94b76cf" />
 
 ### 1.3 Locate watsonx Service
 1. Expand the **AI / Machine Learning** section
