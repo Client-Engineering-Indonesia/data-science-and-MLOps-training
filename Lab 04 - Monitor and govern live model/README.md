@@ -6,7 +6,7 @@ This lab guides you through implementing continuous monitoring and governance fo
 
 ## Overview
 
-After deploying a machine learning model, continuous monitoring is essential to ensure it maintains quality and fairness over time. In this lab, you will:
+In this lab, you will:
 - Configure watsonx.governance for your deployed model
 - Set up monitoring for fairness, quality, and drift
 - Enable explainability features using LIME
@@ -65,7 +65,6 @@ Before starting this lab, ensure you have:
 - Deployed model endpoint running in a deployment space
 - Training dataset CSV file (Repurchase Model Training Dataset.csv)
 - Testing dataset CSV file (Repurchase Model Testing Dataset.csv)
-- Understanding of ML evaluation metrics
 
 ---
 
@@ -86,64 +85,25 @@ By the end of this lab, you will have:
 - Evaluation results across fairness, quality, and drift
 - Detailed confusion matrix and metric analysis
 - LIME-based explanations for predictions
-- Insights into model behavior and feature importance
 
 ---
 
 ## Key Concepts
 
-### watsonx.governance
-IBM's AI governance platform that provides:
+**watsonx.governance** provides AI governance capabilities including:
 - **Continuous Monitoring**: Track model performance over time
 - **Fairness Detection**: Identify and mitigate bias
 - **Quality Assurance**: Ensure models meet performance standards
 - **Drift Detection**: Alert when data or behavior changes
 - **Explainability**: Understand model decisions
 
-### Monitoring Dimensions
+**Fairness Monitoring** detects bias across demographic groups using Statistical Parity Difference metric.
 
-**Fairness Monitoring**
-- Detects bias across demographic groups (gender, age, etc.)
-- Uses Statistical Parity Difference metric
-- Compares monitored vs. reference groups
-- Alerts when bias exceeds thresholds
+**Quality Monitoring** tracks 11+ performance metrics including accuracy, precision, recall, F1, and ROC AUC.
 
-**Quality Monitoring**
-- Tracks 11+ performance metrics
-- Includes accuracy, precision, recall, F1, ROC AUC
-- Monitors confusion matrix changes
-- Alerts when quality degrades
+**Drift Detection** monitors input feature distributions and model behavior changes.
 
-**Drift Detection**
-- Monitors input feature distributions
-- Detects model behavior changes
-- Tracks most important features
-- Alerts when drift exceeds thresholds
-
-**Explainability**
-- Uses LIME (Local Interpretable Model-agnostic Explanations)
-- Shows feature importance for individual predictions
-- Identifies positive and negative correlations
-- Builds trust through transparency
-
----
-
-## Evaluation Results Interpretation
-
-### Fairness Analysis
-- **Passed**: No significant bias detected between groups
-- **Failed**: Bias exceeds configured threshold
-- **Action**: Review model training data and feature engineering
-
-### Quality Analysis
-- **Passed**: All metrics meet configured thresholds
-- **Failed**: One or more metrics below threshold
-- **Action**: Consider retraining, feature engineering, or threshold adjustment
-
-### Drift Analysis
-- **Passed**: Data distribution remains stable
-- **Failed**: Significant drift detected in features or predictions
-- **Action**: Investigate data changes, consider model retraining
+**Explainability** uses LIME (Local Interpretable Model-agnostic Explanations) to show feature importance for individual predictions.
 
 ---
 
@@ -161,4 +121,3 @@ After completing this lab, proceed to:
 - [Model Quality Metrics Guide](https://www.ibm.com/docs/en/watsonx/saas?topic=monitors-quality)
 - [Drift Detection Documentation](https://www.ibm.com/docs/en/watsonx/saas?topic=monitors-drift)
 - [LIME Explainability Guide](https://www.ibm.com/docs/en/watsonx/saas?topic=explanations-local-interpretable-model-agnostic)
-- [AI Governance Best Practices](https://www.ibm.com/topics/ai-governance)
