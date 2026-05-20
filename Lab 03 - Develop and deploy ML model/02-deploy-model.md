@@ -86,7 +86,7 @@ Since this is your first deployment, you need to create a new deployment space:
 In the **API Reference** tab, you'll find comprehensive documentation for calling your endpoint:
 
 **Available Information:**
-- **Private and Public endpoints**: URLs for accessing your model
+- **Private and Public endpoints**: URLs for accessing your model. _Note: Save Public endpoint as you will use it in Lab 05._
 - **Sample code** in multiple languages:
   - cURL
   - Java
