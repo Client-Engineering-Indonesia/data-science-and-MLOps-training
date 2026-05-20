@@ -325,7 +325,7 @@ def main(customer_id, report_date):
    - Calls the custom tool
    - Responds with human-readable prediction
 
-<img width="895" height="277" alt="image" src="https://github.com/user-attachments/assets/f692ec6d-ea6a-4ec1-aeaa-9c8cdf80a936" />
+<img width="1849" height="885" alt="image" src="https://github.com/user-attachments/assets/75bfd9fe-ea8a-48e5-9c61-2f3482d59000" />
 
 ---
 
