@@ -68,15 +68,13 @@ In this section you will create a python function to call API endpoint that you 
 
 2. Click Deploy Python Engine 
 
-<img width="879" height="118" alt="image" src="https://github.com/user-attachments/assets/27a3d415-998c-4048-b8a9-4134ab7db130" />
+<img width="1784" height="70" alt="image" src="https://github.com/user-attachments/assets/b6507d46-a63f-48a0-9ef5-c1d4d1555331" />
 
 3. Set Deployment Space to "Repurchase Model Deployment Space" --> click Create button
 
 <img width="1778" height="889" alt="image" src="https://github.com/user-attachments/assets/25ce9d22-1c45-47b0-aa29-4d0a465d314a" />
 
-4. l
 
-<img width="1784" height="70" alt="image" src="https://github.com/user-attachments/assets/b6507d46-a63f-48a0-9ef5-c1d4d1555331" />
 
 
 
