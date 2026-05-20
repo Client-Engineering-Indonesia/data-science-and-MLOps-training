@@ -1,5 +1,7 @@
 # Data Science and MLOps Training with IBM watsonx
 
+<img width="1920" height="366" alt="image" src="https://github.com/user-attachments/assets/a4ea5498-2e3f-4e15-abd3-b0d82c098bea" />
+
 A comprehensive hands-on training program that guides you through the complete machine learning lifecycle using IBM watsonx platform - from data preparation to model deployment, monitoring, and extending with Agentic AI.
 
 ---
