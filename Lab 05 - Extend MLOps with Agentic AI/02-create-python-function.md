@@ -79,7 +79,7 @@ In this step, you will create a custom Python function that:
 
 | Name | Value | Source |
 |------|-------|--------|
-| `WATSONX_API_KEY` | Your API Key | Created in Lab 01 |
+| `WATSONX_API_KEY` | Your API Key | Created in Lab 01, Step 2.3 |
 | `WATSONX_URL` | `https://us-south.ml.cloud.ibm.com` | Region where environment is provisioned |
 | `WATSONX_PROJECT_ID` | Your Project ID | From URL: `https://dataplatform.cloud.ibm.com/wx/agents/<agent_id>?project_id=<project_id>&context=wx` |
 | `REPURCHASE_MODEL_ENDPOINT` | Model endpoint URL | From Lab 03, Step 2.10 |
