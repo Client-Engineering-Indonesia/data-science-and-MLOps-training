@@ -289,6 +289,8 @@ def main(customer_id, report_date):
   return response_scoring.json()
 ```
 
+<img width="1760" height="710" alt="image" src="https://github.com/user-attachments/assets/3f597d7c-f1f7-494a-8bb7-3cd9f70b6231" />
+
 ---
 
 ## 2.6 Test Custom Tool
@@ -305,7 +307,7 @@ def main(customer_id, report_date):
 3. Click **Run** button <img width="87" height="21" alt="image" src="https://github.com/user-attachments/assets/d29e7212-32d6-466c-a581-90d113ede27b" />
 4. Verify you get a successful result:
 
-<img width="875" height="348" alt="image" src="https://github.com/user-attachments/assets/17e34dcd-5bda-42a9-ad9d-06a11264fa87" />
+<img width="1772" height="887" alt="image" src="https://github.com/user-attachments/assets/785b46a7-70df-41df-a82a-39116c5f6494" />
 
 5. Click **Save** button <img width="62" height="29" alt="image" src="https://github.com/user-attachments/assets/8963521c-7d8d-411f-ac59-0e7fc2120c19" />
 
