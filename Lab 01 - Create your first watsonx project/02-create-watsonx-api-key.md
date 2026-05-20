@@ -4,23 +4,18 @@
 
 ---
 
-## 2.1 Access Profile Settings
-1. Click your **profile icon** in the top right corner
-2. Select **Profile and settings** from the dropdown menu
+## 2.1 Generate API Key
+1. From watsonx.ai main page, scroll down to **Developer Access** section
+2. Click the **Create API Key** button
 
-<img width="383" height="206" alt="image" src="https://github.com/user-attachments/assets/d7f6c8e8-4603-4370-bce2-501b5311a776" />
-
-## 2.2 Generate API Key
-1. Navigate to the **User API key** tab
-2. Click the **Create a key** button
-
-<img width="1792" height="685" alt="image" src="https://github.com/user-attachments/assets/f36850e0-2154-4d6f-b63b-f1d004ed4c5f" />
+<img width="362" height="436" alt="image" src="https://github.com/user-attachments/assets/610c403a-00c4-4572-8f47-3eac68bd8d02" />
 
 ## 2.3 Confirm API Key Creation
-- Verify that you see the success message:
-  > "User API key is successfully created. Your new key is stored in IBM watsonx and IBM Cloud."
+1. Set **Name** to `watsonx api key`
+2. Click **Create** button
+3. Download and save it to your local directory
 
-<img width="861" height="75" alt="image" src="https://github.com/user-attachments/assets/83f53b56-7c67-4846-9495-cd7d99d9e80d" />
+<img width="915" height="468" alt="image" src="https://github.com/user-attachments/assets/3324fd13-9ecd-4ffb-9568-8c4a2b8be57b" />
 
 ---
 
