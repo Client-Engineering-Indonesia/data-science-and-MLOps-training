@@ -80,7 +80,7 @@ In this step, you will create a custom Python function that:
 | Name | Value | Source |
 |------|-------|--------|
 | `WATSONX_API_KEY` | Your API Key | Created in Lab 01, Step 2.3 |
-| `WATSONX_URL` | Your current region | Refer to this [link](https://www.ibm.com/docs/en/watsonx/saas?topic=ai-service-endpoints) |
+| `WATSONX_URL` | Select based on your current region | * Dallas: us-south.ml.cloud.ibm.com * London: eu-gb.ml.cloud.ibm.com * Frankfurt: eu-de.ml.cloud.ibm.com * Tokyo: jp-tok.ml.cloud.ibm.com |
 | `WATSONX_PROJECT_ID` | Your Project ID | From URL: `https://dataplatform.cloud.ibm.com/wx/agents/<agent_id>?project_id=<project_id>&context=wx` |
 | `REPURCHASE_MODEL_ENDPOINT` | Model endpoint URL | From Lab 03, Step 2.10 |
 | `COS_BUCKET_NAME` | `FEATURE_STORE.csv` | Feature store generated from Lab 02, Step 3.4.13 |
