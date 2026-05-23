@@ -80,9 +80,11 @@ In this step, you will create a custom Python function that:
 | Name | Value | Source |
 |------|-------|--------|
 | `WATSONX_API_KEY` | Your API Key | Created in Lab 01, Step 2.3 |
-| `WATSONX_URL` | `https://us-south.ml.cloud.ibm.com` | Region where environment is provisioned |
+| `WATSONX_URL` | Your current region | Refer to this [link](https://www.ibm.com/docs/en/watsonx/saas?topic=ai-service-endpoints) |
 | `WATSONX_PROJECT_ID` | Your Project ID | From URL: `https://dataplatform.cloud.ibm.com/wx/agents/<agent_id>?project_id=<project_id>&context=wx` |
 | `REPURCHASE_MODEL_ENDPOINT` | Model endpoint URL | From Lab 03, Step 2.10 |
+| `COS_BUCKET_NAME` | `FEATURE_STORE.csv` | Feature store generated from Lab 02, Step 3.4.13 |
+| `COS_FEATURE_STORE_FILENAME` | Your bucket name where you store Feature Store | Open this [link](./02.1-get-cos-bucket-name.md) to know your bucket name |
 
 6. After setup, you should have all secrets configured:
 
@@ -247,8 +249,8 @@ def main(customer_id, report_date):
       credentials=credentials,
       project_id=WATSONX_PROJECT_ID,
       connection_id=COS_CONNECTION_ID,
-      bucket_name="repurchasemodel-donotdelete-pr-spincdlcpmf5ao",
-      file_name="FEATURE_STORE.csv",
+      bucket_name=COS_FEATURE_STORE_FILENAME,
+      file_name=COS_FEATURE_STORE_FILENAME,
       sql_query=sql_query
   )
 
