@@ -84,7 +84,7 @@ In this step, you will create a custom Python function that:
 | `WATSONX_PROJECT_ID` | Your Project ID | From URL: `https://dataplatform.cloud.ibm.com/wx/agents/<agent_id>?project_id=<project_id>&context=wx` |
 | `REPURCHASE_MODEL_ENDPOINT` | Model endpoint URL | From Lab 03, Step 2.10 |
 | `COS_BUCKET_NAME` | `FEATURE_STORE.csv` | Feature store generated from Lab 02, Step 3.4.13 |
-| `COS_FEATURE_STORE_FILENAME` | Your bucket name where you store Feature Store | Open this [link](./02.1-get-cos-bucket-name.md) to know your bucket name |
+| `COS_FEATURE_STORE_FILENAME` | Your COS bucket name | Open this [link](./02.1-get-cos-bucket-name.md) to know your bucket name |
 
 6. After setup, you should have all secrets configured:
 
