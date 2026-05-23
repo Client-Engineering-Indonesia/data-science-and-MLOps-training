@@ -80,11 +80,11 @@ In this step, you will create a custom Python function that:
 | Name | Value | Source |
 |------|-------|--------|
 | `WATSONX_API_KEY` | Your API Key | Created in Lab 01, Step 2.3 |
-| `WATSONX_URL` | Select based on your current region | * Dallas: us-south.ml.cloud.ibm.com * London: eu-gb.ml.cloud.ibm.com * Frankfurt: eu-de.ml.cloud.ibm.com * Tokyo: jp-tok.ml.cloud.ibm.com |
+| `WATSONX_URL` | Select based on your region | Dallas: `https://us-south.ml.cloud.ibm.com`<br>London: `https://eu-gb.ml.cloud.ibm.com`<br>Frankfurt: `https://eu-de.ml.cloud.ibm.com`<br>Tokyo: `https://jp-tok.ml.cloud.ibm.com` |
 | `WATSONX_PROJECT_ID` | Your Project ID | From URL: `https://dataplatform.cloud.ibm.com/wx/agents/<agent_id>?project_id=<project_id>&context=wx` |
 | `REPURCHASE_MODEL_ENDPOINT` | Model endpoint URL | From Lab 03, Step 2.10 |
-| `COS_BUCKET_NAME` | `FEATURE_STORE.csv` | Feature store generated from Lab 02, Step 3.4.13 |
-| `COS_FEATURE_STORE_FILENAME` | Your COS bucket name | Open this [link](./02.1-get-cos-bucket-name.md) to know your bucket name |
+| `COS_BUCKET_NAME` | Your COS bucket name | Follow [this guide](./02.1-get-cos-bucket-name.md) to get your bucket name |
+| `COS_FEATURE_STORE_FILENAME` | `FEATURE_STORE.csv` | Feature store file generated from Lab 02, Step 3.4.13 |
 
 6. After setup, you should have all secrets configured:
 
@@ -192,7 +192,6 @@ def main(customer_id, report_date):
           endpoint_url = "https://" + props["url"]
   
           # Create COS client
-          print("hehe")
           cos_client = ibm_boto3.client(
               "s3",
               ibm_api_key_id=api_key,
@@ -202,8 +201,6 @@ def main(customer_id, report_date):
               ),
               endpoint_url=endpoint_url
           )
-  
-          print("hehe")
   
           # Read object from COS
           obj = cos_client.get_object(
@@ -249,7 +246,7 @@ def main(customer_id, report_date):
       credentials=credentials,
       project_id=WATSONX_PROJECT_ID,
       connection_id=COS_CONNECTION_ID,
-      bucket_name=COS_FEATURE_STORE_FILENAME,
+      bucket_name=COS_BUCKET_NAME,
       file_name=COS_FEATURE_STORE_FILENAME,
       sql_query=sql_query
   )
