@@ -5,8 +5,16 @@
 ---
 
 ## 6.1 Select COS Instance
-1. Locate the **Integrated instance** section
-2. Click the **Select Instance** button
+1. Navigate to the **Asset** tab
+2. Click the **New asset** button: <img width="149" height="52" alt="image" src="https://github.com/user-attachments/assets/dd5171ad-7312-4b44-976a-47dd550b405c" />
+3. Find and click **Connect to a data source**
+
+<img width="321" height="242" alt="image" src="https://github.com/user-attachments/assets/893b5b23-d88a-4a75-91b3-9f63fa389808" />
+
+4. In the **Search** field, type: `Cloud Object Storage`
+5. Select **IBM Cloud Object Storage (COS)** from the search results
+6. Click the **Next** button
+7. Click the **Select Instance** button
 
 <img width="782" height="173" alt="image" src="https://github.com/user-attachments/assets/e50dfc64-0363-4b9c-aa94-4f11b3fa81e2" />
 
